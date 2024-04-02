@@ -148,13 +148,14 @@ void ManetteHandle::update()
 	}
 }
 
-void ManetteHandle::setVibration()
+void ManetteHandle::setVibration(unsigned short usLeftSpeed, unsigned short usRightSpeed)
 {
-	param.triggerMask = SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_R2;
+	/*param.triggerMask = SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_R2;
 	param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_R2].mode = SCE_PAD_TRIGGER_EFFECT_MODE_WEAPON;
 	param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_R2].commandData.weaponParam.startPosition = 2;
 	param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_R2].commandData.weaponParam.endPosition = 8;
-	param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_R2].commandData.weaponParam.strength = 5;
+	param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_R2].commandData.weaponParam.strength = 5;*/
+	SteamInput()->TriggerVibration(m_manetteHandles[0], usLeftSpeed, usRightSpeed);
 }
 
 

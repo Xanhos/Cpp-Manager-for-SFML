@@ -72,6 +72,23 @@ void Test::update()
 
 	player.setPosition(posPlayer);
 	player2.setPosition(posPlayer2);
+
+	static bool test = false;
+
+	if (GET_MANAGER->getSteam().getManette().get_button_action("A").bState == true)
+	{
+		GET_MANAGER->getSteam().getManette().setVibration(1000, 1000);
+		test = true;
+	}
+	else
+	{
+		if (test)
+		{
+			GET_MANAGER->getSteam().getManette().setVibration(0, 0);
+		}
+		
+	}
+		
 }
 
 void Test::render()

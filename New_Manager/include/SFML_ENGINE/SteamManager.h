@@ -22,7 +22,7 @@ public:
 	void init(std::string _bind_group_name);
 	void update ();
 
-	void setVibration();
+	void setVibration(unsigned short usLeftSpeed, unsigned short usRightSpeed);
 
 	void create_analog_action(std::string _action);
 	void create_button_action(std::string _action);
