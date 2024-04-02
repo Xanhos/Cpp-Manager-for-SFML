@@ -20,7 +20,7 @@ public:
 	~ManetteHandle();
 
 	void init(std::string _bind_group_name);
-	void update();
+	void update ();
 
 	void setVibration();
 
@@ -44,4 +44,5 @@ public:
 	~SteamManager();
 	
 	ManetteHandle& getManette();
+
 };

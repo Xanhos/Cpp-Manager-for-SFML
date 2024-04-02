@@ -14,6 +14,7 @@ SteamManager::SteamManager()
 void SteamManager::update()
 {
     SteamAPI_RunCallbacks();
+	m_manetteH.update();
 }
 SteamManager::~SteamManager()
 {
