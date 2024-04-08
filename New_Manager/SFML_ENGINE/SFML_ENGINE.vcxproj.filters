@@ -84,7 +84,4 @@
       <Filter>Fichiers d%27en-tête\ENGINE\MANAGER</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\..\NSS\BehindYou\BehindYou.sln.licenseheader" />
-  </ItemGroup>
 </Project>
