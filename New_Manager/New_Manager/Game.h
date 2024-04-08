@@ -1,17 +1,14 @@
-
-#pragma once
 #include "State.h"
-
 
 class Game
 {
-	WindowManager m_windowManager;
-	StateStack m_state;
+    WindowManager m_windowManager;
+    StateList m_state;
 
     void update();
     void render();
 public:
-	Game();
+    Game();
     Game(int width, int height, std::string title, bool fullscreen);
     ~Game();
 
@@ -19,4 +16,3 @@ public:
 
 
 };
-
