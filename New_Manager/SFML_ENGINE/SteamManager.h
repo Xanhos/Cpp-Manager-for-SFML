@@ -33,10 +33,47 @@ public:
 	InputDigitalActionData_t& get_button_action(std::string _action) { return m_buttons_actions[_action]; }
 };
 
+class SFMLENGINE_API AchievmentHandle
+{
+private:
+
+public:
+	AchievmentHandle();
+	~AchievmentHandle();
+
+	void initAchievements();
+
+	void unlockAchievement(const std::string& achievementID);
+	
+};
+
+class SFMLENGINE_API ServeurHandle
+{
+private:
+	bool m_connectedToServer;
+	std::vector<CSteamID> m_joueurPret;
+
+public:
+	ServeurHandle();
+	~ServeurHandle();
+
+	void rechercherJoueurs();
+
+	void connectToServer(CSteamID remoteSteamID);
+
+	void disconnectFromServer();
+
+	bool isConnectedToServer();
+};
+
+
+
 class SFMLENGINE_API SteamManager
 {
 private:
 	ManetteHandle m_manetteH;
+	AchievmentHandle m_achievmentH;
+	ServeurHandle m_serveurH;
 
 public:
 	SteamManager();
@@ -44,5 +81,7 @@ public:
 	~SteamManager();
 	
 	ManetteHandle& getManette();
+	AchievmentHandle& getAchievment();
+	ServeurHandle& getServeur();
 
 };

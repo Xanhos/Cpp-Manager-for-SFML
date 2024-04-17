@@ -26,6 +26,16 @@ ManetteHandle& SteamManager::getManette()
 	return m_manetteH;
 }
 
+AchievmentHandle& SteamManager::getAchievment()
+{
+	return m_achievmentH;
+}
+
+ServeurHandle& SteamManager::getServeur()
+{
+	return m_serveurH;
+}
+
 #pragma endregion
 
 #pragma region MANETTE
@@ -158,5 +168,82 @@ void ManetteHandle::setVibration(unsigned short usLeftSpeed, unsigned short usRi
 	SteamInput()->TriggerVibration(m_manetteHandles[0], usLeftSpeed, usRightSpeed);
 }
 
+
+#pragma endregion
+
+#pragma region ACHIEVMENT
+
+AchievmentHandle::AchievmentHandle()
+{
+}
+
+AchievmentHandle::~AchievmentHandle()
+{
+}
+
+void AchievmentHandle::initAchievements()
+{
+}
+
+void AchievmentHandle::unlockAchievement(const std::string& achievementID)
+{
+}
+
+#pragma endregion
+
+#pragma region SERVEUR
+
+ServeurHandle::ServeurHandle() : m_connectedToServer(false)
+{
+}
+
+ServeurHandle::~ServeurHandle()
+{
+}
+
+void ServeurHandle::rechercherJoueurs()
+{
+	SteamFriends()->SetRichPresence("recherche_combat",);
+	m_joueurPret.clear();
+	SteamNetworkingSockets()->CreateListenSocketP2P();
+
+
+	int nbUtilisateurs = SteamUser()->GetCountOfUsers();
+	for (int i = 0; i < nbUtilisateurs; ++i)
+	{
+		CSteamID steamIDUtilisateur = SteamUser()->GetSteamIDForHandle(SteamUser()->GetUser(i));
+		
+		if (SteamFriends()->GetFriendRichPresence(steamIDUtilisateur, "recherche_combat") == "pret_comnbat") 
+		{
+			m_joueurPret.push_back(steamIDUtilisateur);
+		}
+	}
+}
+
+void ServeurHandle::connectToServer(CSteamID remoteSteamID)
+{
+	if (!m_joueurPret.empty()) 
+	{
+		CSteamID joueurChoisi = m_joueurPret[0]; 
+		ISteamNetworkingSockets* pSockets = SteamNetworkingSockets();
+		HSteamNetConnection hConn = pSockets->ConnectP2P(joueurChoisi);
+		if (hConn != k_HSteamNetConnection_Invalid) 
+		{
+			m_connectedToServer = true;
+		}
+	}
+}
+	
+
+
+void ServeurHandle::disconnectFromServer()
+{
+	m_connectedToServer = false;
+}
+
+bool ServeurHandle::isConnectedToServer()
+{
+	return m_connectedToServer;
+}
 
 #pragma endregion
