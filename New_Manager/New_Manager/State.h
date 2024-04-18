@@ -55,5 +55,7 @@ public:
     sf::Vector2f posPlayer;
     sf::RectangleShape player2;
     sf::Vector2f posPlayer2;
+    sf::Clock timerr;
+    sf::Time time;
 };
 

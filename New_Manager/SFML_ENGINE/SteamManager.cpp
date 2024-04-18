@@ -1,5 +1,11 @@
 #include "SteamManager.h"
 
+
+void OnLobbyListUpdated(const LobbyMatchList_t* pCallback, bool bIOFailure)
+{
+	SteamManager().getServeur().OnLobbyDataUpdated(pCallback, bIOFailure);
+}
+
 #pragma region API
 
 SteamManager::SteamManager()
@@ -7,7 +13,11 @@ SteamManager::SteamManager()
     std::cout << "------- Starting steam API load ------- \n";
 
     if (SteamAPI_Init())
-        SteamInput()->Init(true);
+	{
+		SteamInput()->Init(true);
+
+		getServeur().searchLobby();
+	}
 
     std::cout << "------- Steam API loading finish ------- \n\n\n";
 }
@@ -34,6 +44,11 @@ AchievmentHandle& SteamManager::getAchievment()
 ServeurHandle& SteamManager::getServeur()
 {
 	return m_serveurH;
+}
+
+void SteamManager::LobbyListUpdatedCallback(const LobbyMatchList_t* pCallback, bool bIOFailure)
+{
+	OnLobbyListUpdated(pCallback, bIOFailure);
 }
 
 #pragma endregion
@@ -193,7 +208,7 @@ void AchievmentHandle::unlockAchievement(const std::string& achievementID)
 
 #pragma region SERVEUR
 
-ServeurHandle::ServeurHandle() : m_connectedToServer(false)
+ServeurHandle::ServeurHandle() : m_connectedToLobby(false), m_numLobbies(0)
 {
 }
 
@@ -201,49 +216,75 @@ ServeurHandle::~ServeurHandle()
 {
 }
 
-void ServeurHandle::rechercherJoueurs()
+void ServeurHandle::createLobby()
 {
-	SteamFriends()->SetRichPresence("recherche_combat",);
-	m_joueurPret.clear();
-	SteamNetworkingSockets()->CreateListenSocketP2P();
-
-
-	int nbUtilisateurs = SteamUser()->GetCountOfUsers();
-	for (int i = 0; i < nbUtilisateurs; ++i)
-	{
-		CSteamID steamIDUtilisateur = SteamUser()->GetSteamIDForHandle(SteamUser()->GetUser(i));
-		
-		if (SteamFriends()->GetFriendRichPresence(steamIDUtilisateur, "recherche_combat") == "pret_comnbat") 
-		{
-			m_joueurPret.push_back(steamIDUtilisateur);
-		}
-	}
+	if(SteamMatchmaking()->CreateLobby(k_ELobbyTypePublic, 2))
+		std::cout << "------- create lobby ------- \n";
 }
 
-void ServeurHandle::connectToServer(CSteamID remoteSteamID)
+void ServeurHandle::searchLobby()
 {
-	if (!m_joueurPret.empty()) 
+	SteamMatchmaking()->RequestLobbyList();
+}
+
+void ServeurHandle::inviteFriendtoLobby(CSteamID playerSteamID)
+{
+	SteamFriends()->InviteUserToGame(playerSteamID, "Rejoignez ma partie !" );
+}
+
+void ServeurHandle::connectToLobby(CSteamID remoteSteamID)
+{
+	SteamMatchmaking()->JoinLobby(remoteSteamID);
+	m_currentLobby = remoteSteamID;
+	m_connectedToLobby = true;
+}
+
+void ServeurHandle::connectRandomLobby()
+{
+	for (int i = 0; i < m_numLobbies; ++i)
 	{
-		CSteamID joueurChoisi = m_joueurPret[0]; 
-		ISteamNetworkingSockets* pSockets = SteamNetworkingSockets();
-		HSteamNetConnection hConn = pSockets->ConnectP2P(joueurChoisi);
-		if (hConn != k_HSteamNetConnection_Invalid) 
+		CSteamID lobbyID = SteamMatchmaking()->GetLobbyByIndex(i);
+		if (SteamMatchmaking()->GetNumLobbyMembers(lobbyID) < 2)
 		{
-			m_connectedToServer = true;
+			connectToLobby(lobbyID);
+			m_currentLobby = lobbyID;
+			m_connectedToLobby = true;
+			std::cout << "------- connect to lobby ------- \n";
+			return;
+		}
+		else
+		{
+			std::cout << "------- no lobby ------- \n";
 		}
 	}
 }
 	
-
-
-void ServeurHandle::disconnectFromServer()
+void ServeurHandle::disconnectLobby()
 {
-	m_connectedToServer = false;
+	SteamMatchmaking()->LeaveLobby(m_currentLobby);
+	m_currentLobby = k_steamIDNil;
+	m_connectedToLobby = false;
 }
 
-bool ServeurHandle::isConnectedToServer()
+bool ServeurHandle::isConnectedToLobby()
 {
-	return m_connectedToServer;
+	return m_connectedToLobby;
+}
+
+int ServeurHandle::getNumLobbies()
+{
+	std::cout << "------- nb lobby : "<< m_numLobbies <<" ------- \n";
+	return m_numLobbies;
+}
+
+void ServeurHandle::OnLobbyDataUpdated(const LobbyMatchList_t* pCallback, bool bIOFailure)
+{
+	if (pCallback)
+	{
+		m_numLobbies = pCallback->m_nLobbiesMatching;
+	}
 }
 
 #pragma endregion
+
+

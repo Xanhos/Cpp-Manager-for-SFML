@@ -27,6 +27,17 @@ Test::Test(WindowManager& _window, StateStack* stackState) : State(_window, stac
 
 void Test::update()
 {
+	time = timerr.getElapsedTime();
+
+	if(time.asSeconds() >= 5)
+	{
+		GET_MANAGER->getSteam().getServeur().searchLobby();
+		GET_MANAGER->getSteam().getServeur().getNumLobbies();
+		GET_MANAGER->getSteam().getServeur().connectRandomLobby();
+		timerr.restart();
+	}
+
+
     if (KEY(R) and m_windowManager.timer() > 0.2f)
     {
         m_windowManager.resetTimer();

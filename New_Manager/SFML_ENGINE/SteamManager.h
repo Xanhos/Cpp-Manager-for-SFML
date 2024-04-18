@@ -1,6 +1,8 @@
 #pragma once
 #include "Tools.h"
 
+void OnLobbyListUpdated(const LobbyMatchList_t* pCallback, bool bIOFailure);
+
 class SFMLENGINE_API ManetteHandle
 {
 private:
@@ -50,20 +52,25 @@ public:
 class SFMLENGINE_API ServeurHandle
 {
 private:
-	bool m_connectedToServer;
+	bool m_connectedToLobby;
 	std::vector<CSteamID> m_joueurPret;
+	CSteamID m_currentLobby;
+	int m_numLobbies;
 
 public:
 	ServeurHandle();
 	~ServeurHandle();
 
-	void rechercherJoueurs();
+	void createLobby();
+	void searchLobby();
+	void inviteFriendtoLobby(CSteamID playerSteamID);
+	void connectToLobby(CSteamID remoteSteamID);
+	void connectRandomLobby();
+	void disconnectLobby();
+	bool isConnectedToLobby();
+	int getNumLobbies();
 
-	void connectToServer(CSteamID remoteSteamID);
-
-	void disconnectFromServer();
-
-	bool isConnectedToServer();
+	void OnLobbyDataUpdated(const LobbyMatchList_t* pCallback, bool bIOFailure);
 };
 
 
@@ -83,5 +90,7 @@ public:
 	ManetteHandle& getManette();
 	AchievmentHandle& getAchievment();
 	ServeurHandle& getServeur();
+
+	static void LobbyListUpdatedCallback(const LobbyMatchList_t* pCallback, bool bIOFailure);
 
 };
