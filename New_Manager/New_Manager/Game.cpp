@@ -38,7 +38,7 @@ void Game::render()
 void Game::runGame()
 {
     GET_MANAGER->getSteam();
-    //GET_MANAGER->getSteam().getManette().init("GameControls");
+    GET_MANAGER->getSteam().getManette().init("GameControls");
 
 
     GET_MANAGER->getLoadingScreen() = Animation(GET_MANAGER->getTexture("loading"), sf::IntRect(0, 0, 128, 128), 0.1f, 8);

@@ -24,7 +24,7 @@
 */
 #include "WindowManager.h"
 
-WindowManager::WindowManager() : m_size(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height), m_event(), m_isDone(false), m_isFullscreen(false), m_title("SFML Window"), m_timer(0.f), m_UpdateIsStopped(false)
+WindowManager::WindowManager() : m_size(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height), m_event(), m_isDone(false), m_isFullscreen(true), m_title("SFML Window"), m_timer(0.f), m_UpdateIsStopped(false)
 {
 	m_window.create(sf::VideoMode::getDesktopMode(), "SFML Window", m_isFullscreen ? sf::Style::Fullscreen : sf::Style::Default);
 
