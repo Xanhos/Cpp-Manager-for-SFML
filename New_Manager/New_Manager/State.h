@@ -51,11 +51,11 @@ private:
 public:
 	Test(WindowManager& _window, StateStack* stackState);
 
-    sf::RectangleShape player;
+    sf::Sprite player;
     sf::Vector2f posPlayer;
     sf::RectangleShape player2;
     sf::Vector2f posPlayer2;
-    sf::Clock timerr;
-    sf::Time time;
+   
+    sf::Sprite bg;
 };
 
