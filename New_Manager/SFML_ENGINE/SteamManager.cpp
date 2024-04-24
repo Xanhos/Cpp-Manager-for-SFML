@@ -1,11 +1,5 @@
 #include "SteamManager.h"
 
-
-void OnLobbyListUpdated(const LobbyMatchList_t* pCallback, bool bIOFailure)
-{
-	SteamManager().getServeur().OnLobbyDataUpdated(pCallback, bIOFailure);
-}
-
 #pragma region API
 
 SteamManager::SteamManager()
@@ -16,7 +10,7 @@ SteamManager::SteamManager()
 	{
 		SteamInput()->Init(true);
 
-		getServeur().searchLobby();
+		m_lobbyH.searchLobby();
 	}
 
     std::cout << "------- Steam API loading finish ------- \n\n\n";
@@ -41,14 +35,9 @@ AchievmentHandle& SteamManager::getAchievment()
 	return m_achievmentH;
 }
 
-ServeurHandle& SteamManager::getServeur()
+LobbyHandle& SteamManager::getLobby()
 {
-	return m_serveurH;
-}
-
-void SteamManager::LobbyListUpdatedCallback(const LobbyMatchList_t* pCallback, bool bIOFailure)
-{
-	OnLobbyListUpdated(pCallback, bIOFailure);
+	return m_lobbyH;
 }
 
 #pragma endregion
@@ -206,78 +195,100 @@ void AchievmentHandle::unlockAchievement(const std::string& achievementID)
 
 #pragma endregion
 
-#pragma region SERVEUR
+#pragma region LOBBY
 
-ServeurHandle::ServeurHandle() : m_connectedToLobby(false), m_numLobbies(0)
+LobbyHandle::LobbyHandle() : m_connectedToLobby(false), m_numLobbies(0), m_CallbackCreateLobby(this, &LobbyHandle::OnLobbyCreated)
+{
+
+}
+
+LobbyHandle::~LobbyHandle()
 {
 }
 
-ServeurHandle::~ServeurHandle()
+void LobbyHandle::createLobby(ELobbyType LobbyType, int MaxMembers)
 {
+	SteamAPICall_t hAPICall = SteamMatchmaking()->CreateLobby(LobbyType, MaxMembers);
+
 }
 
-void ServeurHandle::createLobby()
+void LobbyHandle::OnLobbyCreated(LobbyCreated_t* pParam)
 {
-	if(SteamMatchmaking()->CreateLobby(k_ELobbyTypePublic, 2))
-		std::cout << "------- create lobby ------- \n";
+	if (pParam->m_eResult != k_EResultOK)
+	{
+		std::cout << "Erreur lors de la création de la salle d'attente : " << pParam->m_eResult << std::endl;
+	}
+	else
+	{
+		m_currentLobby = pParam->m_ulSteamIDLobby;
+		std::cout << "Salle d'attente créée avec succès ! ID de la salle : " << m_currentLobby.ConvertToUint64() << std::endl;
+	}
 }
 
-void ServeurHandle::searchLobby()
+
+void LobbyHandle::searchLobby()
 {
-	SteamMatchmaking()->RequestLobbyList();
+	SteamAPICall_t hAPICallSteam = SteamMatchmaking()->RequestLobbyList();
+	m_CallbackLobbyDataUpdated.Set(hAPICallSteam, this, &LobbyHandle::OnLobbyDataUpdated);
 }
 
-void ServeurHandle::inviteFriendtoLobby(CSteamID playerSteamID)
+void LobbyHandle::inviteFriendtoLobby(CSteamID playerSteamID)
 {
-	SteamFriends()->InviteUserToGame(playerSteamID, "Rejoignez ma partie !" );
+	SteamFriends()->InviteUserToGame(playerSteamID, "Rejoignez ma partie !");
 }
 
-void ServeurHandle::connectToLobby(CSteamID remoteSteamID)
+void LobbyHandle::connectToLobby(CSteamID remoteSteamID)
 {
 	SteamMatchmaking()->JoinLobby(remoteSteamID);
 	m_currentLobby = remoteSteamID;
 	m_connectedToLobby = true;
 }
 
-void ServeurHandle::connectRandomLobby()
+bool LobbyHandle::connectRandomLobby()
 {
 	for (int i = 0; i < m_numLobbies; ++i)
 	{
 		CSteamID lobbyID = SteamMatchmaking()->GetLobbyByIndex(i);
 		if (SteamMatchmaking()->GetNumLobbyMembers(lobbyID) < 2)
 		{
-			connectToLobby(lobbyID);
 			m_currentLobby = lobbyID;
 			m_connectedToLobby = true;
-			std::cout << "------- connect to lobby ------- \n";
-			return;
+			std::cout << "------- connect to lobby " << m_currentLobby.ConvertToUint64() << " ------- \n";
+			connectToLobby(lobbyID);
+			return true;
 		}
 		else
 		{
 			std::cout << "------- no lobby ------- \n";
+			return false;
 		}
 	}
 }
-	
-void ServeurHandle::disconnectLobby()
+
+void LobbyHandle::disconnectLobby()
 {
 	SteamMatchmaking()->LeaveLobby(m_currentLobby);
 	m_currentLobby = k_steamIDNil;
 	m_connectedToLobby = false;
 }
 
-bool ServeurHandle::isConnectedToLobby()
+bool LobbyHandle::isConnectedToLobby()
 {
 	return m_connectedToLobby;
 }
 
-int ServeurHandle::getNumLobbies()
+int LobbyHandle::getNumLobbies()
 {
-	std::cout << "------- nb lobby : "<< m_numLobbies <<" ------- \n";
+	std::cout << "------- nb lobby : " << m_numLobbies << " ------- \n";
 	return m_numLobbies;
 }
 
-void ServeurHandle::OnLobbyDataUpdated(const LobbyMatchList_t* pCallback, bool bIOFailure)
+CSteamID LobbyHandle::getCureentLobby()
+{
+	return m_currentLobby;
+}
+
+void LobbyHandle::OnLobbyDataUpdated(LobbyMatchList_t* pCallback, bool)
 {
 	if (pCallback)
 	{

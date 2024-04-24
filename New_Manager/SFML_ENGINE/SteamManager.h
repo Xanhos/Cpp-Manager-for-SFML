@@ -1,8 +1,6 @@
 #pragma once
 #include "Tools.h"
 
-void OnLobbyListUpdated(const LobbyMatchList_t* pCallback, bool bIOFailure);
-
 class SFMLENGINE_API ManetteHandle
 {
 private:
@@ -102,7 +100,5 @@ public:
 	ManetteHandle& getManette();
 	AchievmentHandle& getAchievment();
 	LobbyHandle& getLobby();
-
-	static void LobbyListUpdatedCallback(const LobbyMatchList_t* pCallback, bool bIOFailure);
 
 };
