@@ -54,10 +54,8 @@ class SFMLENGINE_API LobbyHandle
 {
 private:
 	bool m_connectedToLobby;
-	std::vector<CSteamID> m_joueurPret;
 	CSteamID m_currentLobby;
 	int m_numLobbies;
-	int m_numMembers;
 
 	CCallResult< LobbyHandle, LobbyMatchList_t> m_CallbackLobbyDataUpdated;
 	typedef void (LobbyHandle::* LobbyDataCallback_t)(LobbyMatchList_t*, bool);

@@ -27,15 +27,7 @@ Test::Test(WindowManager& _window, StateStack* stackState) : State(_window, stac
 
 void Test::update()
 {
-	time = timerr.getElapsedTime();
 
-	if(time.asSeconds() >= 5)
-	{
-		GET_MANAGER->getSteam().getServeur().searchLobby();
-		GET_MANAGER->getSteam().getServeur().getNumLobbies();
-		GET_MANAGER->getSteam().getServeur().connectRandomLobby();
-		timerr.restart();
-	}
 
 
     if (KEY(R) and m_windowManager.timer() > 0.2f)
@@ -45,7 +37,7 @@ void Test::update()
         pushState(1);
     }
 
-	
+	/// TEST MANETTE
 
 	if (GET_MANAGER->getSteam().getManette().get_analog_action("Move").y > 0.3f)
 	{
@@ -80,12 +72,12 @@ void Test::update()
 	{
 		posPlayer2.x += 0.1;
 	}
-
 	player.setPosition(posPlayer);
 	player2.setPosition(posPlayer2);
 
-	static bool test = false;
+	/// TEST VIBRATION
 
+	static bool test = false;
 	if (GET_MANAGER->getSteam().getManette().get_button_action("A").bState == true)
 	{
 		GET_MANAGER->getSteam().getManette().setVibration(1000, 1000);
@@ -94,10 +86,7 @@ void Test::update()
 	else
 	{
 		if (test)
-		{
 			GET_MANAGER->getSteam().getManette().setVibration(0, 0);
-		}
-		
 	}
 		
 }

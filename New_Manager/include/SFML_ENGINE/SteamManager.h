@@ -1,8 +1,6 @@
 #pragma once
 #include "Tools.h"
 
-void OnLobbyListUpdated(const LobbyMatchList_t* pCallback, bool bIOFailure);
-
 class SFMLENGINE_API ManetteHandle
 {
 private:
@@ -49,38 +47,48 @@ public:
 	
 };
 
-class SFMLENGINE_API ServeurHandle
+struct LobbyCreated_t;
+struct LobbyMatchList_t;
+
+class SFMLENGINE_API LobbyHandle
 {
 private:
 	bool m_connectedToLobby;
-	std::vector<CSteamID> m_joueurPret;
 	CSteamID m_currentLobby;
 	int m_numLobbies;
 
-public:
-	ServeurHandle();
-	~ServeurHandle();
+	CCallResult< LobbyHandle, LobbyMatchList_t> m_CallbackLobbyDataUpdated;
+	typedef void (LobbyHandle::* LobbyDataCallback_t)(LobbyMatchList_t*, bool);
 
-	void createLobby();
+	CCallback<LobbyHandle, LobbyCreated_t> m_CallbackCreateLobby;
+	typedef void (LobbyHandle::* CallbackFunc_t)(LobbyCreated_t*, bool);
+
+public:
+	LobbyHandle();
+	~LobbyHandle();
+
+	void createLobby(ELobbyType LobbyType, int MaxMembers);
+
 	void searchLobby();
 	void inviteFriendtoLobby(CSteamID playerSteamID);
 	void connectToLobby(CSteamID remoteSteamID);
-	void connectRandomLobby();
+	bool connectRandomLobby();
 	void disconnectLobby();
 	bool isConnectedToLobby();
 	int getNumLobbies();
+	CSteamID getCureentLobby();
 
-	void OnLobbyDataUpdated(const LobbyMatchList_t* pCallback, bool bIOFailure);
+	void OnLobbyDataUpdated(LobbyMatchList_t* pCallback, bool);
+	void OnLobbyCreated(LobbyCreated_t* pParam);
+
 };
-
-
 
 class SFMLENGINE_API SteamManager
 {
 private:
 	ManetteHandle m_manetteH;
 	AchievmentHandle m_achievmentH;
-	ServeurHandle m_serveurH;
+	LobbyHandle m_lobbyH;
 
 public:
 	SteamManager();
@@ -89,8 +97,6 @@ public:
 	
 	ManetteHandle& getManette();
 	AchievmentHandle& getAchievment();
-	ServeurHandle& getServeur();
-
-	static void LobbyListUpdatedCallback(const LobbyMatchList_t* pCallback, bool bIOFailure);
+	LobbyHandle& getLobby();
 
 };
