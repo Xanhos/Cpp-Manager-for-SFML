@@ -96,7 +96,7 @@ void Test::update()
 void Test::render()
 {
 	m_windowManager.draw(bg);
-    m_animation.Animate(m_windowManager.getWindow(), 6);
+    //m_animation.Animate(m_windowManager.getWindow(), 6);
 	m_windowManager.draw(player);
 	m_windowManager.draw(player2);
 	
