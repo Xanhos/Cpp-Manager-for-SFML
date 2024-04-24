@@ -24,12 +24,32 @@
 */
 #include "WindowManager.h"
 
-WindowManager::WindowManager() : m_size(1280, 720), m_event(), m_isDone(false), m_isFullscreen(false), m_title("SFML Window"), m_timer(0.f), m_UpdateIsStopped(false)
+WindowManager::WindowManager() : m_size(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height), m_event(), m_isDone(false), m_isFullscreen(false), m_title("SFML Window"), m_timer(0.f), m_UpdateIsStopped(false)
 {
-	m_window.create(sf::VideoMode(1280, 720), "SFML Window", m_isFullscreen ? sf::Style::Fullscreen : sf::Style::Default);
+	m_window.create(sf::VideoMode::getDesktopMode(), "SFML Window", m_isFullscreen ? sf::Style::Fullscreen : sf::Style::Default);
+
+	if (m_size.x <= 1920.f && m_size.y <= 1080.f)
+		m_view.setCenter(1920.f / 2.f, 1080.F / 2.F);
+	else if (m_size.x <= 1920.f)
+		m_view.setCenter(1920.f / 2.f, m_size.y / 2.F);
+	else if (m_size.y <= 1080.f)
+		m_view.setCenter(m_size.x / 2.f, 1080.F / 2.F);
+	else
+		m_view.setCenter(m_size.x / 2.f, m_size.y / 2.F);
+
+	if (m_size.x >= 1920.f && m_size.y >= 1080.f)
+		m_view.setSize(static_cast<float>(m_size.x), static_cast<float>(m_size.y));
+	else if (m_size.x >= 1920.f)
+		m_view.setSize(static_cast<float>(m_size.x), 1080.f);
+	else if (m_size.y >= 1080.f)
+		m_view.setSize(1920.f, static_cast<float>(m_size.y));
+	else
+		m_view.setSize(1920.f, 1080.f);
+
+	m_window.setView(m_view);
 }
 
-WindowManager::WindowManager(int width, int height, std::string title, bool fullscreen) : m_size(width, height), m_event(),m_isDone(false),m_isFullscreen(fullscreen),m_title(title),m_timer(0.f),m_UpdateIsStopped(false)
+WindowManager::WindowManager(int width, int height, std::string title, bool fullscreen) : m_size(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height), m_event(), m_isDone(false), m_isFullscreen(fullscreen), m_title(title), m_timer(0.f), m_UpdateIsStopped(false)
 {
 	m_window.create(sf::VideoMode(width, height), title, m_isFullscreen ? sf::Style::Fullscreen : sf::Style::Default);
 }
@@ -86,6 +106,16 @@ sf::RenderWindow& WindowManager::getWindow()
 sf::Vector2i WindowManager::getSize() const
 {
 	return m_size;
+}
+
+void WindowManager::setDefaultView()
+{
+	m_window.setView(m_view);
+}
+
+sf::View& WindowManager::getView()
+{
+	return m_view;
 }
 
 void WindowManager::clear(sf::Color clearColor)
