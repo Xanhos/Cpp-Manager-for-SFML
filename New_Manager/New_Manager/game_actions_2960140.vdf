@@ -21,6 +21,7 @@
 			"AnalogTrigger"
 			{
 				"RT"				"#Game_RT"
+				"LT"				"#Game_LT"
 			}
 			"Button"
 			{
@@ -28,9 +29,8 @@
 				"B"				"#Game_B"
 				"X"				"#Game_X"
 				"Y"				"#Game_Y"
-				"RB"				"#Game_RB"
 				"LB"				"#Game_LB"
-				"LT"				"#Game_LT"
+				"RB"				"#Game_RB"
 				"START"				"#Game_START"
 				"SHARE"				"#Game_SHARE"
 			}
@@ -54,6 +54,7 @@
 			"AnalogTrigger"
 			{
 				"RT"				"#Menu_RT"
+				"LT"				"#Menu_LT"
 			}
 			"Button"
 			{
@@ -61,9 +62,8 @@
 				"B"				"#Menu_B"
 				"X"				"#Menu_X"
 				"Y"				"#Menu_Y"
-				"RB"				"#Menu_RB"
 				"LB"				"#Menu_LB"
-				"LT"				"#Menu_LT"
+				"RB"				"#Menu_RB"
 				"START"				"#Menu_START"
 				"SHARE"				"#Menu_SHARE"
 			}
