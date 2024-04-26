@@ -137,26 +137,23 @@ void ManetteHandle::update()
 		SteamInput()->ActivateActionSet(m_manetteHandles[0], tmp_action_set_handle);
 	}
 }
-void ManetteHandle::setVibration(unsigned short usLeftSpeed, unsigned short usRightSpeed)
+void ManetteHandle::setVibration(unsigned short usLeftSpeed, unsigned short usRightSpeed) const
 {
 	SteamInput()->TriggerVibration(m_manetteHandles[0], usLeftSpeed, usRightSpeed);
 }
 void ManetteHandle::setDualSenseTriggerEffect(int l_start, int l_end, int l_strenght, int r_start, int r_end, int r_strenght)
 {
-	param.triggerMask = SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_L2;
-	param.command[SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_L2].mode = SCE_PAD_TRIGGER_EFFECT_MODE_VIBRATION;
-	param.command[SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_L2].commandData.weaponParam.startPosition = l_start;
-	param.command[SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_L2].commandData.weaponParam.endPosition = l_end;
-	param.command[SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_L2].commandData.weaponParam.strength = l_strenght;
-	SteamInput()->SetDualSenseTriggerEffect(m_manetteHandles[0], &param);
-
-	param.triggerMask = SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_R2;
-	param.command[SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_R2].mode = SCE_PAD_TRIGGER_EFFECT_MODE_VIBRATION;
-	param.command[SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_R2].commandData.weaponParam.startPosition = r_start;
-	param.command[SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_R2].commandData.weaponParam.endPosition = r_end;
-	param.command[SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_R2].commandData.weaponParam.strength = r_strenght;
+	param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_L2].mode = SCE_PAD_TRIGGER_EFFECT_MODE_VIBRATION;
+	param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_L2].commandData.weaponParam.startPosition = l_start;
+	param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_L2].commandData.weaponParam.endPosition = l_end;
+	param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_L2].commandData.weaponParam.strength = l_strenght;
+	param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_R2].mode = SCE_PAD_TRIGGER_EFFECT_MODE_VIBRATION;
+	param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_R2].commandData.weaponParam.startPosition = l_start;
+	param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_R2].commandData.weaponParam.endPosition = l_end;
+	param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_R2].commandData.weaponParam.strength = l_strenght;
 	SteamInput()->SetDualSenseTriggerEffect(m_manetteHandles[0], &param);
 }
+
 void ManetteHandle::create_analog_action(std::string _action)
 {
 	InputAnalogActionHandle_t tmp_analog_action = SteamInput()->GetAnalogActionHandle(_action.c_str());

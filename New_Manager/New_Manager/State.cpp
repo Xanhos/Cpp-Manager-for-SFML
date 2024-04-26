@@ -25,7 +25,7 @@ Test::Test(WindowManager& _window, StateStack* stackState) : State(_window, stac
 
 	bg.setTexture(GET_MANAGER->getTexture("screen"));
 
-	//GET_MANAGER->getSteam().getManette().setDualSenseTriggerEffect(2, 8, 5, 2, 8, 5);
+	GET_MANAGER->getSteam().getManette().setDualSenseTriggerEffect(2, 8, 5, 2, 8, 5);
 	
 }
 
@@ -62,11 +62,11 @@ void Test::update()
 
 	if (GET_MANAGER->getSteam().getManette().get_analog_action("Camera").y > 0.3f)
 	{
-		posPlayer2.y -= 0.1;
+		posPlayer2.y += 0.1;
 	}
 	if (GET_MANAGER->getSteam().getManette().get_analog_action("Camera").y < -0.3f)
 	{
-		posPlayer2.y += 0.1;
+		posPlayer2.y -= 0.1;
 	}
 	if (GET_MANAGER->getSteam().getManette().get_analog_action("Camera").x < -0.3f)
 	{
@@ -93,7 +93,19 @@ void Test::update()
 			GET_MANAGER->getSteam().getManette().setVibration(0, 0);
 	}
 
-	
+	///// TEST trigger vibration
+	//static bool test2 = false;
+	//if (GET_MANAGER->getSteam().getManette().get_button_action("Y").bState == true)
+	//{
+	//	GET_MANAGER->getSteam().getManette().setDualSenseTriggerEffect(2, 8, 5, 2, 8, 5);
+	//	test2 = true;
+	//}
+	//else
+	//{
+	//	if (test2)
+	//		GET_MANAGER->getSteam().getManette().setDualSenseTriggerEffect(2, 8, 0, 2, 8, 0);
+	//}
+
 	
 	
 		

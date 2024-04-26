@@ -68,7 +68,7 @@ public:
 	/// \param usLeftSpeed Intensity of the left motor
 	/// \param usRightSpeed Intensity of the right motor
 	////////////////////////////////////////////////////////////
-	void setVibration(unsigned short usLeftSpeed, unsigned short usRightSpeed);
+	void setVibration(unsigned short usLeftSpeed, unsigned short usRightSpeed) const;
 
 	////////////////////////////////////////////////////////////
 	/// \brief Set dualsense trigger effect for the controller (left & right)
