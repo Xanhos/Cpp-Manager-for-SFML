@@ -90,6 +90,18 @@ void Test::update()
 		if (test)
 			GET_MANAGER->getSteam().getManette().setVibration(0, 0);
 	}
+
+	/*static bool test2 = false;
+	if (GET_MANAGER->getSteam().getManette().get_button_action("X").bState == true)
+	{
+		GET_MANAGER->getSteam().getManette().setDualSenseTriggerEffect(2, 8, 5, 2, 8, 5);
+		test2 = true;
+	}
+	else
+	{
+		if (test2)
+			GET_MANAGER->getSteam().getManette().setDualSenseTriggerEffect(0, 0, 0, 0, 0, 0);
+	}*/
 		
 }
 

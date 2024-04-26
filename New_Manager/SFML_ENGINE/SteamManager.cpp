@@ -44,26 +44,12 @@ LobbyHandle& SteamManager::getLobby()
 
 #pragma region MANETTE
 
-ManetteHandle::ManetteHandle()
+ManetteHandle::ManetteHandle() : m_nb_manette(0), m_rebind_controller(false)
 {
 }
-
 ManetteHandle::~ManetteHandle() 
 {
 }
-
-void ManetteHandle::create_analog_action(std::string _action)
-{
-	InputAnalogActionHandle_t tmp_analog_action = SteamInput()->GetAnalogActionHandle(_action.c_str());
-	m_analog_actions[_action] = std::make_tuple(SteamInput()->GetAnalogActionData(m_manetteHandles[0], tmp_analog_action), std::array<sf::Vector2f, 10>{}, 0u);
-}
-
-void ManetteHandle::create_button_action(std::string _action)
-{
-	InputDigitalActionHandle_t tmp_button_action = SteamInput()->GetDigitalActionHandle(_action.c_str());
-	m_buttons_actions[_action] = SteamInput()->GetDigitalActionData(m_manetteHandles[0], tmp_button_action);
-}
-
 void ManetteHandle::init(std::string _bind_group_name)
 {
 	m_nb_manette = SteamInput()->GetConnectedControllers(m_manetteHandles);
@@ -73,7 +59,6 @@ void ManetteHandle::init(std::string _bind_group_name)
 	m_rebind_controller = false;
 	
 }
-
 void ManetteHandle::update()
 {
 	if (!SteamInput()->GetConnectedControllers(m_manetteHandles))
@@ -148,31 +133,40 @@ void ManetteHandle::update()
 			std::get<0>(analog.second) = tmp_analog_position;
 		}
 
-		memset(&param, 0, sizeof(param));
-		param.triggerMask = SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_R2;
-		param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_R2].mode = SCE_PAD_TRIGGER_EFFECT_MODE_WEAPON;
-		param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_R2].commandData.weaponParam.startPosition = 2;
-		param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_R2].commandData.weaponParam.endPosition = 8;
-		param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_R2].commandData.weaponParam.strength = 5;
-		SteamInput()->SetDualSenseTriggerEffect(m_manetteHandles[0], &param);
-
-
 		tmp_action_set_handle = SteamInput()->GetActionSetHandle(analog.first.c_str());
 		SteamInput()->ActivateActionSet(m_manetteHandles[0], tmp_action_set_handle);
 	}
 }
-
 void ManetteHandle::setVibration(unsigned short usLeftSpeed, unsigned short usRightSpeed)
 {
-	/*param.triggerMask = SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_R2;
-	param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_R2].mode = SCE_PAD_TRIGGER_EFFECT_MODE_WEAPON;
-	param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_R2].commandData.weaponParam.startPosition = 2;
-	param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_R2].commandData.weaponParam.endPosition = 8;
-	param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_R2].commandData.weaponParam.strength = 5;*/
 	SteamInput()->TriggerVibration(m_manetteHandles[0], usLeftSpeed, usRightSpeed);
 }
+void ManetteHandle::setDualSenseTriggerEffect(int l_start, int l_end, int l_strenght, int r_start, int r_end, int r_strenght)
+{
+	param.triggerMask = SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_L2;
+	param.command[SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_L2].mode = SCE_PAD_TRIGGER_EFFECT_MODE_VIBRATION;
+	param.command[SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_L2].commandData.weaponParam.startPosition = l_start;
+	param.command[SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_L2].commandData.weaponParam.endPosition = l_end;
+	param.command[SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_L2].commandData.weaponParam.strength = l_strenght;
+	SteamInput()->SetDualSenseTriggerEffect(m_manetteHandles[0], &param);
 
-
+	param.triggerMask = SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_R2;
+	param.command[SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_L2].mode = SCE_PAD_TRIGGER_EFFECT_MODE_VIBRATION;
+	param.command[SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_L2].commandData.weaponParam.startPosition = r_start;
+	param.command[SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_L2].commandData.weaponParam.endPosition = r_end;
+	param.command[SCE_PAD_TRIGGER_EFFECT_TRIGGER_MASK_L2].commandData.weaponParam.strength = r_strenght;
+	SteamInput()->SetDualSenseTriggerEffect(m_manetteHandles[0], &param);
+}
+void ManetteHandle::create_analog_action(std::string _action)
+{
+	InputAnalogActionHandle_t tmp_analog_action = SteamInput()->GetAnalogActionHandle(_action.c_str());
+	m_analog_actions[_action] = std::make_tuple(SteamInput()->GetAnalogActionData(m_manetteHandles[0], tmp_analog_action), std::array<sf::Vector2f, 10>{}, 0u);
+}
+void ManetteHandle::create_button_action(std::string _action)
+{
+	InputDigitalActionHandle_t tmp_button_action = SteamInput()->GetDigitalActionHandle(_action.c_str());
+	m_buttons_actions[_action] = SteamInput()->GetDigitalActionData(m_manetteHandles[0], tmp_button_action);
+}
 #pragma endregion
 
 #pragma region ACHIEVMENT
