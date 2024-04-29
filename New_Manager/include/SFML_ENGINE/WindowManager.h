@@ -42,6 +42,11 @@ class SFMLENGINE_API WindowManager
 	float m_Movie_Volume;
 
 public:
+
+	////////////////////////////////////////////////////////////
+	/// \brief constructor of windowManager()
+	/// \default view with auto resize as set on windows (if you change view please reset with setDefaultView)
+	////////////////////////////////////////////////////////////
 	WindowManager();
 	WindowManager(int width, int height, std::string title, bool fullscreen);
 

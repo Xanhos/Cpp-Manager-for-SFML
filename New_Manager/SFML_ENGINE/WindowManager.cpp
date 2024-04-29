@@ -52,6 +52,26 @@ WindowManager::WindowManager() : m_size(sf::VideoMode::getDesktopMode().width, s
 WindowManager::WindowManager(int width, int height, std::string title, bool fullscreen) : m_size(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height), m_event(), m_isDone(false), m_isFullscreen(fullscreen), m_title(title), m_timer(0.f), m_UpdateIsStopped(false)
 {
 	m_window.create(sf::VideoMode(width, height), title, m_isFullscreen ? sf::Style::Fullscreen : sf::Style::Default);
+
+	if (m_size.x <= 1920.f && m_size.y <= 1080.f)
+		m_view.setCenter(1920.f / 2.f, 1080.F / 2.F);
+	else if (m_size.x <= 1920.f)
+		m_view.setCenter(1920.f / 2.f, m_size.y / 2.F);
+	else if (m_size.y <= 1080.f)
+		m_view.setCenter(m_size.x / 2.f, 1080.F / 2.F);
+	else
+		m_view.setCenter(m_size.x / 2.f, m_size.y / 2.F);
+
+	if (m_size.x >= 1920.f && m_size.y >= 1080.f)
+		m_view.setSize(static_cast<float>(m_size.x), static_cast<float>(m_size.y));
+	else if (m_size.x >= 1920.f)
+		m_view.setSize(static_cast<float>(m_size.x), 1080.f);
+	else if (m_size.y >= 1080.f)
+		m_view.setSize(1920.f, static_cast<float>(m_size.y));
+	else
+		m_view.setSize(1920.f, 1080.f);
+
+	m_window.setView(m_view);
 }
 
 bool WindowManager::isFullscreen() const
