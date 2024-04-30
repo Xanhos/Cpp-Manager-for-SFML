@@ -133,6 +133,11 @@ void WindowManager::setDefaultView()
 	m_window.setView(m_view);
 }
 
+void WindowManager::setVsync(bool OnOff)
+{
+	m_window.setVerticalSyncEnabled(OnOff);
+}
+
 sf::View& WindowManager::getView()
 {
 	return m_view;

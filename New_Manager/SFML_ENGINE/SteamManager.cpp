@@ -225,7 +225,7 @@ void LobbyHandle::searchLobby()
 
 void LobbyHandle::inviteFriendtoLobby(CSteamID playerSteamID)
 {
-	SteamFriends()->InviteUserToGame(playerSteamID, "Rejoignez ma partie !");
+	//SteamFriends()->InviteUserToGame(playerSteamID);
 }
 
 void LobbyHandle::connectToLobby(CSteamID remoteSteamID)
