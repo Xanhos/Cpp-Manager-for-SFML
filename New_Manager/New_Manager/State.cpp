@@ -32,7 +32,10 @@ Test::Test(WindowManager& _window, StateStack* stackState) : State(_window, stac
 void Test::update()
 {
 
-
+	if (KEY(I) and m_windowManager.timer() > 0.2f)
+	{
+		GET_MANAGER->getSteam().getLobby().inviteFriendtoLobby(CSteamID(76561198333300848, k_EUniversePublic, k_EAccountTypeIndividual));
+	}
 
     if (KEY(R) and m_windowManager.timer() > 0.2f)
     {
