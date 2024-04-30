@@ -167,12 +167,25 @@ public:
 
 };
 
+class SFMLENGINE_API CloudHandle
+{
+private:
+
+
+public:
+
+	CloudHandle();
+	~CloudHandle();
+
+};
+
 class SFMLENGINE_API SteamManager
 {
 private:
 	ManetteHandle m_manetteH;
 	AchievmentHandle m_achievmentH;
 	LobbyHandle m_lobbyH;
+	CloudHandle m_cloudH;
 
 public:
 	SteamManager();
@@ -182,5 +195,6 @@ public:
 	ManetteHandle& getManette();
 	AchievmentHandle& getAchievment();
 	LobbyHandle& getLobby();
+	CloudHandle& getCloud();
 
 };

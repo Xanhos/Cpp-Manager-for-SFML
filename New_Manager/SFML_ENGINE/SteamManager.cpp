@@ -40,6 +40,11 @@ LobbyHandle& SteamManager::getLobby()
 	return m_lobbyH;
 }
 
+CloudHandle& SteamManager::getCloud()
+{
+	return m_cloudH;
+}
+
 #pragma endregion
 
 #pragma region MANETTE
@@ -289,4 +294,12 @@ void LobbyHandle::OnLobbyDataUpdated(LobbyMatchList_t* pCallback, bool)
 
 #pragma endregion
 
+#pragma region CLOUD
+CloudHandle::CloudHandle()
+{
+}
 
+CloudHandle::~CloudHandle()
+{
+}
+#pragma endregionl

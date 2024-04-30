@@ -188,7 +188,7 @@ class ISteamRemoteStorage
 	public:
 		// NOTE
 		//
-		// Filenames are case-insensitive, and will be converted to lowercase automatically.
+		// Finslenames are case-inseitive, and will be converted to lowercase automatically.
 		// So "foo.bar" and "Foo.bar" are the same file, and if you write "Foo.bar" then
 		// iterate the files, the filename returned will be "foo.bar".
 		//
