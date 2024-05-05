@@ -29,6 +29,7 @@ Test::Test(WindowManager& _window, StateStack* stackState) : State(_window, stac
 	
 }
 
+
 void Test::update()
 {
 	if (KEY(P) and m_windowManager.timer() > 0.2f)
