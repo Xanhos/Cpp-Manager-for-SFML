@@ -53,36 +53,36 @@ void Test::update()
 
 	if (GET_MANAGER->getSteam().getManette().get_analog_action("Move").y > 0.3f)
 	{
-		posPlayer.y -= 0.1;
+		posPlayer.y -= 0.1f;
 	}
 	if (GET_MANAGER->getSteam().getManette().get_analog_action("Move").y < -0.3f)
 	{
-		posPlayer.y += 0.1;
+		posPlayer.y += 0.1f;
 	}
 	if (GET_MANAGER->getSteam().getManette().get_analog_action("Move").x < -0.3f)
 	{
-		posPlayer.x -= 0.1;
+		posPlayer.x -= 0.1f;
 	}
 	if (GET_MANAGER->getSteam().getManette().get_analog_action("Move").x > 0.3f)
 	{
-		posPlayer.x += 0.1;
+		posPlayer.x += 0.1f;
 	}
 
 	if (GET_MANAGER->getSteam().getManette().get_analog_action("Camera").y > 0.3f)
 	{
-		posPlayer2.y += 0.1;
+		posPlayer2.y += 0.1f;
 	}
 	if (GET_MANAGER->getSteam().getManette().get_analog_action("Camera").y < -0.3f)
 	{
-		posPlayer2.y -= 0.1;
+		posPlayer2.y -= 0.1f;
 	}
 	if (GET_MANAGER->getSteam().getManette().get_analog_action("Camera").x < -0.3f)
 	{
-		posPlayer2.x -= 0.1;
+		posPlayer2.x -= 0.1f;
 	}
 	if (GET_MANAGER->getSteam().getManette().get_analog_action("Camera").x > 0.3f)
 	{
-		posPlayer2.x += 0.1;
+		posPlayer2.x += 0.1f;
 	}
 	player.setPosition(posPlayer);
 	player2.setPosition(posPlayer2);

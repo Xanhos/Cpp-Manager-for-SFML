@@ -40,81 +40,86 @@ LobbyHandle& SteamManager::getLobby()
 	return m_lobbyH;
 }
 
-CloudHandle& SteamManager::getCloud()
-{
-	return m_cloudH;
-}
+
 
 #pragma endregion
 
 #pragma region MANETTE
 
-ManetteHandle::ManetteHandle() : m_nb_manette(0), m_rebind_controller(false)
+ManetteHandle::ManetteHandle() : m_nbManette(0), m_actionSet(0u), m_rebindController(false)
 {
+	for (int i = 0; i < STEAM_INPUT_MAX_COUNT; i++)
+		m_manetteHandles[i] = 0u;
 }
-ManetteHandle::~ManetteHandle() 
+
+ManetteHandle::~ManetteHandle()
 {
+	m_buttonsActions.clear();
+	m_analogActions.clear();
+	m_actions.clear();
 }
-void ManetteHandle::init(std::string _bind_group_name)
+
+void ManetteHandle::init(std::string bindGroupName)
 {
-	m_nb_manette = SteamInput()->GetConnectedControllers(m_manetteHandles);
-	m_actionSet = SteamInput()->GetActionSetHandle(_bind_group_name.c_str());
+	m_nbManette = SteamInput()->GetConnectedControllers(m_manetteHandles);
+	m_actionSet = SteamInput()->GetActionSetHandle(bindGroupName.c_str());
 	SteamInput()->ActivateActionSet(m_manetteHandles[0], m_actionSet);
-	m_bind_group_name = _bind_group_name;
-	m_rebind_controller = false;
+	m_bindGroupName = bindGroupName;
+	m_rebindController = false;
 	
 }
+
 void ManetteHandle::update()
 {
 	if (!SteamInput()->GetConnectedControllers(m_manetteHandles))
-		m_rebind_controller = true;
+		m_rebindController = true;
 
-	if (m_rebind_controller)
+	if (m_rebindController)
 	{
-		m_nb_manette = SteamInput()->GetConnectedControllers(this->getHandleController());
-		m_actionSet = SteamInput()->GetActionSetHandle(m_bind_group_name.c_str());
+		m_nbManette = SteamInput()->GetConnectedControllers(this->getHandleController());
+		m_actionSet = SteamInput()->GetActionSetHandle(m_bindGroupName.c_str());
 		SteamInput()->ActivateActionSet(m_manetteHandles[0], m_actionSet);
 
-		std::map<std::string, InputDigitalActionData_t> tmp_bind_buttons;
-		for (auto& button : m_buttons_actions)
+		std::map<std::string, InputDigitalActionData_t> tmp_bindButtons;
+		for (auto& button : m_buttonsActions)
 		{
-			InputDigitalActionHandle_t tmp_button_action = SteamInput()->GetDigitalActionHandle(button.first.c_str());
-			tmp_bind_buttons[button.first] = SteamInput()->GetDigitalActionData(m_manetteHandles[0], tmp_button_action);
+			InputDigitalActionHandle_t tmp_buttonAction = SteamInput()->GetDigitalActionHandle(button.first.c_str());
+			tmp_bindButtons[button.first] = SteamInput()->GetDigitalActionData(m_manetteHandles[0], tmp_buttonAction);
 		}
 
-		m_buttons_actions.clear();
-		m_buttons_actions = tmp_bind_buttons;
+		m_buttonsActions.clear();
+		m_buttonsActions = tmp_bindButtons;
 
-		std::map<std::string, std::tuple<InputAnalogActionData_t, std::array<sf::Vector2f, 10>, unsigned short>> tmp_bind_analog;
-		for (auto& analog : m_analog_actions)
+		std::map<std::string, std::tuple<InputAnalogActionData_t, std::array<sf::Vector2f, 10>, unsigned short>> tmp_bindAnalog;
+		for (auto& analog : m_analogActions)
 		{
-			InputAnalogActionHandle_t tmp_analog_action = SteamInput()->GetAnalogActionHandle(analog.first.c_str());
-			tmp_bind_analog[analog.first] = std::make_tuple(SteamInput()->GetAnalogActionData(m_manetteHandles[0], tmp_analog_action), std::array<sf::Vector2f, 10>{}, 0u);
+			InputAnalogActionHandle_t tmp_analogAction = SteamInput()->GetAnalogActionHandle(analog.first.c_str());
+			tmp_bindAnalog[analog.first] = std::make_tuple(SteamInput()->GetAnalogActionData(m_manetteHandles[0], tmp_analogAction), std::array<sf::Vector2f, 10>{}, 0u);
 		}
 
-		m_analog_actions.clear();
-		m_analog_actions = tmp_bind_analog;
+		m_analogActions.clear();
+		m_analogActions = tmp_bindAnalog;
 
-		if (m_nb_manette > 0)
-			m_rebind_controller = false;
+		if (m_nbManette > 0)
+			m_rebindController = false;
 	}
 
-	InputDigitalActionHandle_t tmp_button_action;
-	for (auto& m_button : m_buttons_actions)
+	InputDigitalActionHandle_t tmp_buttonAction;
+	for (auto& button : m_buttonsActions)
 	{
-		tmp_button_action = SteamInput()->GetDigitalActionHandle(m_button.first.c_str());
-		m_button.second = SteamInput()->GetDigitalActionData(m_manetteHandles[0], tmp_button_action);
+		tmp_buttonAction = SteamInput()->GetDigitalActionHandle(button.first.c_str());
+		button.second = SteamInput()->GetDigitalActionData(m_manetteHandles[0], tmp_buttonAction);
 	}
 
-	InputAnalogActionHandle_t tmp_analog_action;
-	InputActionSetHandle_t tmp_action_set_handle;
-	InputAnalogActionData_t tmp_analog_position;
-	for (auto& analog : m_analog_actions)
+	InputAnalogActionHandle_t tmp_analogAction;
+	InputActionSetHandle_t tmp_actionSetHandle;
+	InputAnalogActionData_t tmp_analogPosition;
+	for (auto& analog : m_analogActions)
 	{
-		tmp_analog_action = SteamInput()->GetAnalogActionHandle(analog.first.c_str());
-		tmp_analog_position = SteamInput()->GetAnalogActionData(m_manetteHandles[0], tmp_analog_action);
-
-		std::get<1>(analog.second)[std::get<2>(analog.second)] = sf::Vector2f(tmp_analog_position.x, tmp_analog_position.y);
+		tmp_analogAction = SteamInput()->GetAnalogActionHandle(analog.first.c_str());
+		tmp_analogPosition = SteamInput()->GetAnalogActionData(m_manetteHandles[0], tmp_analogAction);
+		
+		std::get<1>(analog.second)[std::get<2>(analog.second)] = sf::Vector2f(tmp_analogPosition.x, tmp_analogPosition.y);
 		std::get<2>(analog.second)++;
 
 		if (std::get<2>(analog.second) == static_cast<unsigned short>(std::get<1>(analog.second).size()))
@@ -127,26 +132,26 @@ void ManetteHandle::update()
 						return true;
 				}) == std::get<1>(analog.second).end())
 			{
-				std::get<0>(analog.second) = tmp_analog_position;
+				std::get<0>(analog.second) = tmp_analogPosition;
 			}
 
 			std::get<2>(analog.second) = 0u;
 		}
 
-		if (tmp_analog_position.x != 0 || tmp_analog_position.y != 0)
+		if (tmp_analogPosition.x != 0.f || tmp_analogPosition.y != 0.f)
 		{
-			std::get<0>(analog.second) = tmp_analog_position;
+			std::get<0>(analog.second) = tmp_analogPosition;
 		}
 
-		tmp_action_set_handle = SteamInput()->GetActionSetHandle(analog.first.c_str());
-		SteamInput()->ActivateActionSet(m_manetteHandles[0], tmp_action_set_handle);
+		tmp_actionSetHandle = SteamInput()->GetActionSetHandle(analog.first.c_str());
+		SteamInput()->ActivateActionSet(m_manetteHandles[0], tmp_actionSetHandle);
 	}
 }
 void ManetteHandle::setVibration(unsigned short usLeftSpeed, unsigned short usRightSpeed) const
 {
 	SteamInput()->TriggerVibration(m_manetteHandles[0], usLeftSpeed, usRightSpeed);
 }
-void ManetteHandle::setDualSenseTriggerEffect(int l_start, int l_end, int l_strenght, int r_start, int r_end, int r_strenght)
+void ManetteHandle::setDualSenseTriggerEffect(uint8_t l_start, uint8_t l_end, uint8_t l_strenght, uint8_t r_start, uint8_t r_end, uint8_t r_strenght)
 {
 	param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_L2].mode = SCE_PAD_TRIGGER_EFFECT_MODE_VIBRATION;
 	param.command[SCE_PAD_TRIGGER_EFFECT_PARAM_INDEX_FOR_L2].commandData.weaponParam.startPosition = l_start;
@@ -159,15 +164,15 @@ void ManetteHandle::setDualSenseTriggerEffect(int l_start, int l_end, int l_stre
 	SteamInput()->SetDualSenseTriggerEffect(m_manetteHandles[0], &param);
 }
 
-void ManetteHandle::create_analog_action(std::string _action)
+void ManetteHandle::create_analog_action(std::string action)
 {
-	InputAnalogActionHandle_t tmp_analog_action = SteamInput()->GetAnalogActionHandle(_action.c_str());
-	m_analog_actions[_action] = std::make_tuple(SteamInput()->GetAnalogActionData(m_manetteHandles[0], tmp_analog_action), std::array<sf::Vector2f, 10>{}, 0u);
+	InputAnalogActionHandle_t tmp_analogAction = SteamInput()->GetAnalogActionHandle(action.c_str());
+	m_analogActions[action] = std::make_tuple(SteamInput()->GetAnalogActionData(m_manetteHandles[0], tmp_analogAction), std::array<sf::Vector2f, 10>{}, 0u);
 }
-void ManetteHandle::create_button_action(std::string _action)
+void ManetteHandle::create_button_action(std::string action)
 {
-	InputDigitalActionHandle_t tmp_button_action = SteamInput()->GetDigitalActionHandle(_action.c_str());
-	m_buttons_actions[_action] = SteamInput()->GetDigitalActionData(m_manetteHandles[0], tmp_button_action);
+	InputDigitalActionHandle_t tmp_buttonAction = SteamInput()->GetDigitalActionHandle(action.c_str());
+	m_buttonsActions[action] = SteamInput()->GetDigitalActionData(m_manetteHandles[0], tmp_buttonAction);
 }
 #pragma endregion
 
@@ -175,61 +180,47 @@ void ManetteHandle::create_button_action(std::string _action)
 
 AchievmentHandle::AchievmentHandle() {}
 
-AchievmentHandle::~AchievmentHandle() {}
+//AchievmentHandle::~AchievmentHandle() = default;
 
 bool AchievmentHandle::initFromSteamworks()
 {
 	if (NULL == SteamUserStats() || NULL == SteamUser())
 		return false;
 
-	// Vérifie si l'utilisateur est connecté à Steam
 	if (!SteamUser()->BLoggedOn())
 		return false;
 
-	// Initialise les statistiques et les succès à partir de Steamworks
 	SteamUserStats()->RequestCurrentStats();
 	return true;
 }
 
 bool AchievmentHandle::setStat(const char* name, int value)
 {
-	// Définit la valeur d'une statistique
 	return SteamUserStats()->SetStat(name, value);
 }
 
 bool AchievmentHandle::getStat(const char* name, int* value)
 {
-	// Récupère la valeur d'une statistique
 	return SteamUserStats()->GetStat(name, value);
 }
 
 bool AchievmentHandle::incrementStat(const char* name, int increment)
 {
-	// Incrémente la valeur d'une statistique
 	return SteamUserStats()->SetStat(name, increment);
-}
-
-bool AchievmentHandle::decrementStat(const char* name, int decrement)
-{
-	// Décrémente la valeur d'une statistique
-	return SteamUserStats()->SetStat(name, decrement);
 }
 
 bool AchievmentHandle::storeStats()
 {
-	// Enregistre les statistiques sur le serveur Steam
 	return SteamUserStats()->StoreStats();
 }
 
 bool AchievmentHandle::setAchievement(const char* name)
 {
-	// Définit la valeur d'un succès à true
 	return SteamUserStats()->SetAchievement(name);
 }
 
 bool AchievmentHandle::clearAchievement(const char* name)
 {
-	// Réinitialise la valeur d'un succès à false
 	return SteamUserStats()->ClearAchievement(name);
 }
 
@@ -254,19 +245,19 @@ LobbyHandle::~LobbyHandle()
 void LobbyHandle::createLobby(ELobbyType LobbyType, int MaxMembers)
 {
 	SteamAPICall_t hAPICall = SteamMatchmaking()->CreateLobby(LobbyType, MaxMembers);
-
+	std::cout << hAPICall << '\n';
 }
 
 void LobbyHandle::OnLobbyCreated(LobbyCreated_t* pParam)
 {
 	if (pParam->m_eResult != k_EResultOK)
 	{
-		std::cout << "Erreur lors de la création de la salle d'attente : " << pParam->m_eResult << std::endl;
+		std::cout << "Erreur lors de la creation de la salle d'attente : " << pParam->m_eResult << '\n';
 	}
 	else
 	{
 		m_currentLobby = pParam->m_ulSteamIDLobby;
-		std::cout << "Salle d'attente créée avec succès ! ID de la salle : " << m_currentLobby.ConvertToUint64() << std::endl;
+		std::cout << "Salle d'attente creer avec succes ! ID de la salle : " << m_currentLobby.ConvertToUint64() << '\n';
 	}
 }
 
@@ -291,7 +282,7 @@ void LobbyHandle::connectToLobby(CSteamID remoteSteamID)
 
 bool LobbyHandle::connectRandomLobby()
 {
-	for (int i = 0; i < m_numLobbies; ++i)
+	for (int i = 0; i <= m_numLobbies; i++)
 	{
 		CSteamID lobbyID = SteamMatchmaking()->GetLobbyByIndex(i);
 		if (SteamMatchmaking()->GetNumLobbyMembers(lobbyID) < 2)
@@ -308,6 +299,8 @@ bool LobbyHandle::connectRandomLobby()
 			return false;
 		}
 	}
+
+	return false;
 }
 
 void LobbyHandle::disconnectLobby()
@@ -337,19 +330,10 @@ void LobbyHandle::OnLobbyDataUpdated(LobbyMatchList_t* pCallback, bool)
 {
 	if (pCallback)
 	{
-		m_numLobbies = pCallback->m_nLobbiesMatching;
+		m_numLobbies = static_cast<int>(pCallback->m_nLobbiesMatching);
 	}
 }
 
 #pragma endregion
 
-#pragma region CLOUD
-CloudHandle::CloudHandle()
-{
-}
-
-CloudHandle::~CloudHandle()
-{
-}
-#pragma endregion
 

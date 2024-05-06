@@ -175,9 +175,6 @@
     <ClInclude Include="Tools.h" />
     <ClInclude Include="WindowManager.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\..\NSS\BehindYou\BehindYou.sln.licenseheader" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
