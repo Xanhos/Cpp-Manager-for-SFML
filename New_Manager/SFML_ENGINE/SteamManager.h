@@ -302,9 +302,6 @@ public:
 	/// \brief Destructor.
 	////////////////////////////////////////////////////////////
 	~CloudHanle() = default;
-    
-	// Initialise le Steam Cloud
-	bool initCloud();
 
 	// Enregistre des donnees dans le Cloud Steam
 	bool saveDataToCloud(const std::string& filename, const void* data, int dataSize) ;
