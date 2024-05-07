@@ -8,25 +8,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4769ce90-0606-49e1-a520-6ccb7e306464" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.New_Manager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.New_Manager/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DLL_ENGINE/Debug/SFML_ENGINE-d.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DLL_ENGINE/Debug/SFML_ENGINE-d.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DLL_ENGINE/Release/SFML_ENGINE.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DLL_ENGINE/Release/SFML_ENGINE.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/New_Manager/State.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/New_Manager/State.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/New_Manager/x64/Release/New_Manager.iobj" beforeDir="false" afterPath="$PROJECT_DIR$/New_Manager/x64/Release/New_Manager.iobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/New_Manager/x64/Release/New_Manager.ipdb" beforeDir="false" afterPath="$PROJECT_DIR$/New_Manager/x64/Release/New_Manager.ipdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SFML_ENGINE/MovieManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/SFML_ENGINE/MovieManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SFML_ENGINE/SFML_ENGINE.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/SFML_ENGINE/SFML_ENGINE.vcxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SFML_ENGINE/SteamManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/SFML_ENGINE/SteamManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SFML_ENGINE/SteamManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/SFML_ENGINE/SteamManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SFML_ENGINE/Tools.h" beforeDir="false" afterPath="$PROJECT_DIR$/SFML_ENGINE/Tools.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SFML_ENGINE/x64/Release/SFML_ENGINE.iobj" beforeDir="false" afterPath="$PROJECT_DIR$/SFML_ENGINE/x64/Release/SFML_ENGINE.iobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SFML_ENGINE/x64/Release/SFML_ENGINE.ipdb" beforeDir="false" afterPath="$PROJECT_DIR$/SFML_ENGINE/x64/Release/SFML_ENGINE.ipdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/SFML_ENGINE/MovieManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/SFML_ENGINE/MovieManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SFML_ENGINE/WindowManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/SFML_ENGINE/WindowManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/SFML_ENGINE/SteamManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/SFML_ENGINE/SteamManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/SFML_ENGINE/Tools.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/SFML_ENGINE/Tools.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/SFML_ENGINE-d.lib" beforeDir="false" afterPath="$PROJECT_DIR$/lib/SFML_ENGINE-d.lib" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/SFML_ENGINE.lib" beforeDir="false" afterPath="$PROJECT_DIR$/lib/SFML_ENGINE.lib" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/x64/Debug/SFML_ENGINE-d.dll" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/SFML_ENGINE-d.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Release/SFML_ENGINE.dll" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Release/SFML_ENGINE.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

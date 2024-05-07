@@ -295,29 +295,58 @@ class SFMLENGINE_API CloudHanle
 public:
 	////////////////////////////////////////////////////////////
 	/// \brief Default constructor.
+	/// 
 	////////////////////////////////////////////////////////////
 	CloudHanle();
 
 	////////////////////////////////////////////////////////////
 	/// \brief Destructor.
+	/// 
 	////////////////////////////////////////////////////////////
 	~CloudHanle() = default;
 
-	// Enregistre des donnees dans le Cloud Steam
+	////////////////////////////////////////////////////////////////
+	/// \brief Saves data to the Steam Cloud.
+	/// \param filename The name of the file to save.
+	/// \param data Pointer to the data to save.
+	/// \param dataSize Size of the data to save.
+	/// \return True if the data was saved successfully, false otherwise.
+	////////////////////////////////////////////////////////////////
 	bool saveDataToCloud(const std::string& filename, const void* data, int dataSize) ;
 
-	// Charge des donnees depuis le Cloud Steam
+	////////////////////////////////////////////////////////////////
+	/// \brief Loads data from the Steam Cloud.
+	/// \param filename The name of the file to load.
+	/// \param buffer Pointer to the buffer to store the loaded data.
+	/// \param bufferSize Size of the buffer.
+	/// \return The size of the loaded data, or -1 if the file does not exist.
+	////////////////////////////////////////////////////////////////
 	int loadDataFromCloud(const std::string& filename, void* buffer, int bufferSize);
 
-	// Verifie si le Cloud Steam est active pour le jeu
+	////////////////////////////////////////////////////////////////
+	/// \brief Checks if the Steam Cloud is enabled for the game.
+	/// \return True if the Steam Cloud is enabled, false otherwise.
+	////////////////////////////////////////////////////////////////
 	bool isCloudEnabled();
 
-	// Verifie si un fichier specifique existe dans le Cloud Steam
+	////////////////////////////////////////////////////////////////
+	/// \brief Checks if a specific file exists in the Steam Cloud.
+	/// \param filename The name of the file to check.
+	/// \return True if the file exists, false otherwise.
+	////////////////////////////////////////////////////////////////
 	bool isCloudFileExists(const std::string& filename);
 
-	// Supprime un fichier du Cloud Steam
+	////////////////////////////////////////////////////////////////
+	/// \brief Deletes a file from the Steam Cloud.
+	/// \param filename The name of the file to delete.
+	/// \return True if the file was deleted successfully, false otherwise.
+	////////////////////////////////////////////////////////////////
 	bool deleteCloudFile(const std::string& filename);
-
+	
+	////////////////////////////////////////////////////////////////
+	/// \brief Lists all files in the Steam Cloud.
+	/// \return A vector of pairs containing the filenames and their sizes.
+	////////////////////////////////////////////////////////////////
 	std::vector<std::pair<std::string, int32>> listCloudFiles();
     
 };
@@ -333,16 +362,19 @@ private:
 public:
 	////////////////////////////////////////////////////////////
 	/// \brief Default constructor.
+	/// 
 	////////////////////////////////////////////////////////////
 	SteamManager();
 
 	////////////////////////////////////////////////////////////
 	/// \brief Updates Steam-related operations.
+	/// 
 	////////////////////////////////////////////////////////////
 	void update();
 
 	////////////////////////////////////////////////////////////
 	/// \brief Destructor.
+	/// 
 	////////////////////////////////////////////////////////////
 	~SteamManager();
 

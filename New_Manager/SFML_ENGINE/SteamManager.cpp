@@ -345,9 +345,9 @@ void LobbyHandle::OnLobbyDataUpdated(LobbyMatchList_t* pCallback, bool)
 CloudHanle::CloudHanle()
 {
     if (!SteamRemoteStorage() && !SteamRemoteStorage()->IsCloudEnabledForApp())
-        std::cerr << "Erreur lors de l'initialisation du Cloud Steam." << std::endl;
+        std::cerr << "Erreur lors de l'initialisation du Cloud Steam." << "\n";
     else
-    std::cerr << "Init du Cloud Steam succesfull" << std::endl;
+    std::cerr << "Init du Cloud Steam succesfull" << "\n";
 }
 
 bool CloudHanle::saveDataToCloud(const std::string& filename, const void* data, int dataSize)

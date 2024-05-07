@@ -49,7 +49,7 @@ WindowManager::WindowManager() : m_size(sf::VideoMode::getDesktopMode().width, s
 	m_window.setView(m_view);
 }
 
-WindowManager::WindowManager(int width, int height, std::string title, bool fullscreen) : m_size(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height), m_event(), m_isDone(false), m_isFullscreen(fullscreen), m_title(title), m_timer(0.f), m_UpdateIsStopped(false)
+WindowManager::WindowManager(int width, int height, std::string title, bool fullscreen) : m_size(width, height), m_event(), m_isDone(false), m_isFullscreen(fullscreen), m_title(title), m_timer(0.f), m_UpdateIsStopped(false)
 {
 	m_window.create(sf::VideoMode(width, height), title, m_isFullscreen ? sf::Style::Fullscreen : sf::Style::Default);
 
