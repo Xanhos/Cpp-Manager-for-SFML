@@ -40,6 +40,10 @@ LobbyHandle& SteamManager::getLobby()
 	return m_lobbyH;
 }
 
+CloudHanle& SteamManager::getCloud()
+{
+	return m_cloudH;
+}
 
 
 #pragma endregion
@@ -336,4 +340,6 @@ void LobbyHandle::OnLobbyDataUpdated(LobbyMatchList_t* pCallback, bool)
 
 #pragma endregion
 
+#pragma region Cloud
 
+#pragma endregion

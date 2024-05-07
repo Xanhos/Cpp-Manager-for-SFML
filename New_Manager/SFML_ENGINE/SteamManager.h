@@ -290,12 +290,48 @@ public:
 
 };
 
+class SFMLENGINE_API CloudHanle
+{
+public:
+	////////////////////////////////////////////////////////////
+	/// \brief Default constructor.
+	////////////////////////////////////////////////////////////
+	CloudHanle();
+
+	////////////////////////////////////////////////////////////
+	/// \brief Destructor.
+	////////////////////////////////////////////////////////////
+	~CloudHanle() = default;
+    
+	// Initialise le Steam Cloud
+	bool initCloud();
+
+	// Enregistre des donnees dans le Cloud Steam
+	bool saveDataToCloud(const std::string& filename, const void* data, int dataSize) ;
+
+	// Charge des donnees depuis le Cloud Steam
+	int loadDataFromCloud(const std::string& filename, void* buffer, int bufferSize);
+
+	// Verifie si le Cloud Steam est active pour le jeu
+	bool isCloudEnabled();
+
+	// Verifie si un fichier specifique existe dans le Cloud Steam
+	bool isCloudFileExists(const std::string& filename);
+
+	// Supprime un fichier du Cloud Steam
+	bool deleteCloudFile(const std::string& filename);
+
+	std::vector<std::pair<std::string, int32>> listCloudFiles();
+    
+};
+
 class SFMLENGINE_API SteamManager
 {
 private:
 	ManetteHandle m_manetteH;///< Handle for controller input
 	AchievmentHandle m_achievmentH;///< Handle for achievements
 	LobbyHandle m_lobbyH;///< Handle for lobbies
+	CloudHanle m_cloudH;///< Handle for cloud
 
 public:
 	////////////////////////////////////////////////////////////
@@ -330,4 +366,10 @@ public:
 	/// \return Reference to the lobby handle.
 	////////////////////////////////////////////////////////////
 	LobbyHandle& getLobby();
+
+	////////////////////////////////////////////////////////////
+	/// \brief Gets the cloud handle.
+	/// \return Reference to the cloud handle.
+	////////////////////////////////////////////////////////////
+	CloudHanle& getCloud();
 };
