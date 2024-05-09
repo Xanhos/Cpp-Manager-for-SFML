@@ -112,6 +112,12 @@ namespace Tools
         float getNorme(sf::Vector2<T> pos)
         {
             return sqrt(pos.x * pos.x + pos.y * pos.y);
+        }  
+
+        template<typename T>
+        sf::Vector2<T> normalize(sf::Vector2<T> _v)
+        {
+            return _v / getNorme(_v);
         }
     }
     
