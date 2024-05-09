@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "SFML_ENGINE/RessourcesManager.h"
 
+
 Game::Game() : m_windowManager()
 {
 }
@@ -20,6 +21,7 @@ void Game::update()
 {
     Tools::restartClock();
     m_windowManager.EventUpdate();
+
     if (KEY(F11) && m_windowManager.timer() > 0.25f && m_windowManager.getWindow().hasFocus())
     {
         m_windowManager.toggleFullscreen();
@@ -68,11 +70,12 @@ void Game::render()
 
 void Game::runGame()
 {
-    /*TODO : Modifier la texture de l'écran de chargement*/
+
+    /*TODO : Modifier la texture de l'Ã©cran de chargement*/
     GET_MANAGER->getLoadingScreen() = Animation(GET_MANAGER->getTexture("loading"), sf::IntRect(0, 0, 140, 170), 0.1f, 7);
     GET_MANAGER->getLoadingScreen().getSprite().setPosition({ (m_windowManager.getWindow().getSize().x - 140.f) / 2, (m_windowManager.getWindow().getSize().y - GET_MANAGER->getLoadingScreen().getSprite().getGlobalBounds().height) / 2 });
 
-    /*TODO : Modifier le state de départ de l'application*/
+    /*TODO : Modifier le state de dÃ©part de l'application*/
 
     
 
@@ -85,9 +88,12 @@ void Game::runGame()
             GET_MANAGER->setVolumeForAllSound(m_windowManager.getSFX_Volume());
         }
 
-
         update();
+
+     
+
         render();
     }
 
+    GET_MANAGER->getSteam().~SteamManager();
 }

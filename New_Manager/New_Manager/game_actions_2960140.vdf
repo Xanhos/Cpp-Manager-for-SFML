@@ -1,0 +1,108 @@
+"In Game Actions"
+{
+	"actions"
+	{
+		"GameControls"	
+		{
+			"title"					"#Set_game"
+			"StickPadGyro"
+			{
+				"Move"
+				{
+					"title"			"#Game_MOVE"
+					"input_mode"		"joystick_move"
+				}
+				"Camera"
+				{
+					"title"			"#Game_CAMERA"
+					"input_mode"		"absolute_mouse"	
+				}
+			}
+			"AnalogTrigger"
+			{
+				"RT"				"#Game_RT"
+				"LT"				"#Game_LT"
+			}
+			"Button"
+			{
+				"A"				"#Game_A"
+				"B"				"#Game_B"
+				"X"				"#Game_X"
+				"Y"				"#Game_Y"
+				"LB"				"#Game_LB"
+				"RB"				"#Game_RB"
+				"START"				"#Game_START"
+				"SHARE"				"#Game_SHARE"
+			}
+		}
+		"MenuControls"
+		{
+			"title"		"#Set_Menu"
+			"StickPadGyro"
+			{
+				"Move"
+				{
+					"title"			"#Menu_MOVE"
+					"input_mode"		"joystick_move"
+				}
+				"Camera"
+				{
+					"title"			"#Menu_CAMERA"
+					"input_mode"		"absolute_mouse"	
+				}
+			}
+			"AnalogTrigger"
+			{
+				"RT"				"#Menu_RT"
+				"LT"				"#Menu_LT"
+			}
+			"Button"
+			{
+				"A"				"#Menu_A"
+				"B"				"#Menu_B"
+				"X"				"#Menu_X"
+				"Y"				"#Menu_Y"
+				"LB"				"#Menu_LB"
+				"RB"				"#Menu_RB"
+				"START"				"#Menu_START"
+				"SHARE"				"#Menu_SHARE"
+			}
+		}
+	}
+	"localization"
+	{
+		"english"
+		{
+			"Set_GameControls"		"Game Controls"
+			"Set_MenuControls"		"Menu Controls"
+
+			"Game_A"			"A"
+			"Game_B"			"B"
+			"Game_X"			"X"
+			"Game_Y"			"Y"	
+			"Game_RB"			"RB"	
+			"Game_RT"			"RT"
+			"Game_LB"			"LB"	
+			"Game_LT"			"LT"	
+			"Game_START"			"START"
+			"Game_SHARE"			"SHARE"
+			"Game_MOVE"			"MOVE"
+			"Game_CAMERA"			"CAMERA"
+
+			"Menu_A"			"A"
+			"Menu_B"			"B"
+			"Menu_X"			"X"
+			"Menu_Y"			"Y"	
+			"Menu_RB"			"RB"	
+			"Menu_RT"			"RT"
+			"Menu_LB"			"LB"	
+			"Menu_LT"			"LT"	
+			"Menu_START"			"START"
+			"Menu_SHARE"			"SHARE"
+			"Menu_MOVE"			"MOVE"
+			"Menu_CAMERA"			"CAMERA"
+
+		}
+		
+	}
+}

@@ -1,4 +1,4 @@
-/*
+ /*
     Based on Coffee Engine
 
     Author: GRALLAN Yann
@@ -41,6 +41,9 @@
 #include <algorithm>
 #include <stack>
 #include <unordered_map>
+#include "Steam/steam_api.h"
+#include "Steam/isteamdualsense.h"
+#include <array>
 
 #ifdef SFMLENGINE_EXPORTS
 #define SFMLENGINE_API __declspec(dllexport)

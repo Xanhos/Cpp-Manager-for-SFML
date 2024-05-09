@@ -25,7 +25,7 @@
 #pragma once
 #include "Tools.h"
 
-class Movie
+class SFMLENGINE_API Movie
 {
 	sfe::Movie m_movie;
 public:
@@ -37,7 +37,7 @@ public:
 
 typedef std::unordered_map<std::string, std::unique_ptr<Movie>> MovieMap;
 
-class MovieManager
+class SFMLENGINE_API MovieManager
 {
 	MovieMap m_GlobalMovie;
 	MovieMap m_SceneMovie;

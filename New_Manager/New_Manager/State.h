@@ -49,4 +49,4 @@ public:
     std::string virtual getName() { return m_name; }
 };
 
-typedef std::list<std::unique_ptr<State>> StateList;
+
