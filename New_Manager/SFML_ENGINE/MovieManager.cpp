@@ -67,9 +67,8 @@ MovieManager::MovieManager()
 
 	for (auto dir : std::filesystem::recursive_directory_iterator("../Ressources/ALL/MOVIES"))
 	{
-		m_GlobalMovie.emplace(Tools::ToLower(dir.path().filename().stem().string()), std::move(std::make_unique<Movie>(dir.path().string())));
+		m_GlobalMovie.emplace(Tools::ToLower(dir.path().filename().stem().string()), std::make_unique<Movie>(dir.path().string()));
 	}
-
 #ifdef _DEBUG
 	std::cout << "------- Global movies loading finish ------- \n\n\n";
 #endif // !DEBUG

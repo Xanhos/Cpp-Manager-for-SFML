@@ -3,7 +3,7 @@
 
 int main()
 {
-    Game game;
+    Game game(1080, 720, "Test", false);
     game.runGame();
 	return 0;
 }

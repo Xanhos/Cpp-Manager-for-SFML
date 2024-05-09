@@ -70,7 +70,7 @@ void Game::render()
 
 void Game::runGame()
 {
-
+    GET_MANAGER;
     /*TODO : Modifier la texture de l'écran de chargement*/
     GET_MANAGER->getLoadingScreen() = Animation(GET_MANAGER->getTexture("loading"), sf::IntRect(0, 0, 140, 170), 0.1f, 7);
     GET_MANAGER->getLoadingScreen().getSprite().setPosition({ (m_windowManager.getWindow().getSize().x - 140.f) / 2, (m_windowManager.getWindow().getSize().y - GET_MANAGER->getLoadingScreen().getSprite().getGlobalBounds().height) / 2 });

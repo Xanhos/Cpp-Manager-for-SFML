@@ -46,7 +46,11 @@ RessourcesManager::~RessourcesManager()
 RessourcesManager* RessourcesManager::getInstance()
 {
 	if (!m_instance)
+	{
+		
+		std::cout << "Start Ressources loading\n";
 		m_instance = new RessourcesManager();
+	}
 	return m_instance;
 }
 

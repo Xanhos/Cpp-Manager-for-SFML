@@ -9,8 +9,8 @@ SteamManager::SteamManager()
     if (SteamAPI_Init())
 	{
 		SteamInput()->Init(true);
+		m_cloudH.init();
 
-		m_lobbyH.searchLobby();
 	}
 
     std::cout << "------- Steam API loading finish ------- \n\n\n";
@@ -30,7 +30,7 @@ ManetteHandle& SteamManager::getManette()
 	return m_manetteH;
 }
 
-AchievmentHandle& SteamManager::getAchievment()
+AchievementHandle& SteamManager::getAchievment()
 {
 	return m_achievmentH;
 }
@@ -52,6 +52,7 @@ CloudHanle& SteamManager::getCloud()
 
 ManetteHandle::ManetteHandle() : m_nbManette(0), m_actionSet(0u), m_rebindController(false)
 {
+	std::cout << "------- ManetteHandle creation ------- \n";
 	for (int i = 0; i < STEAM_INPUT_MAX_COUNT; i++)
 		m_manetteHandles[i] = 0u;
 }
@@ -182,11 +183,14 @@ void ManetteHandle::create_button_action(std::string action)
 
 #pragma region ACHIEVMENT
 
-AchievmentHandle::AchievmentHandle() {}
+AchievementHandle::AchievementHandle()
+{
+	std::cout << "------- AchievementHandle creation ------- \n";
+}
 
 //AchievmentHandle::~AchievmentHandle() = default;
 
-bool AchievmentHandle::initFromSteamworks()
+bool AchievementHandle::initFromSteamworks()
 {
 	if (NULL == SteamUserStats() || NULL == SteamUser())
 		return false;
@@ -198,37 +202,37 @@ bool AchievmentHandle::initFromSteamworks()
 	return true;
 }
 
-bool AchievmentHandle::setStat(const char* name, int value)
+bool AchievementHandle::setStat(const char* name, int value)
 {
 	return SteamUserStats()->SetStat(name, value);
 }
 
-bool AchievmentHandle::getStat(const char* name, int* value)
+bool AchievementHandle::getStat(const char* name, int* value)
 {
 	return SteamUserStats()->GetStat(name, value);
 }
 
-bool AchievmentHandle::incrementStat(const char* name, int increment)
+bool AchievementHandle::incrementStat(const char* name, int increment)
 {
 	return SteamUserStats()->SetStat(name, increment);
 }
 
-bool AchievmentHandle::storeStats()
+bool AchievementHandle::storeStats()
 {
 	return SteamUserStats()->StoreStats();
 }
 
-bool AchievmentHandle::setAchievement(const char* name)
+bool AchievementHandle::setAchievement(const char* name)
 {
 	return SteamUserStats()->SetAchievement(name);
 }
 
-bool AchievmentHandle::clearAchievement(const char* name)
+bool AchievementHandle::clearAchievement(const char* name)
 {
 	return SteamUserStats()->ClearAchievement(name);
 }
 
-bool AchievmentHandle::request()
+bool AchievementHandle::request()
 {
 	return SteamUserStats()->RequestCurrentStats();
 }
@@ -239,7 +243,7 @@ bool AchievmentHandle::request()
 
 LobbyHandle::LobbyHandle() : m_connectedToLobby(false), m_numLobbies(0), m_CallbackCreateLobby(this, &LobbyHandle::OnLobbyCreated)
 {
-
+		std::cout << "------- LobbyHandle creation ------- \n";
 }
 
 LobbyHandle::~LobbyHandle()
@@ -344,10 +348,16 @@ void LobbyHandle::OnLobbyDataUpdated(LobbyMatchList_t* pCallback, bool)
 
 CloudHanle::CloudHanle()
 {
-    if (!SteamRemoteStorage() && !SteamRemoteStorage()->IsCloudEnabledForApp())
-        std::cerr << "Erreur lors de l'initialisation du Cloud Steam." << "\n";
-    else
-    std::cerr << "Init du Cloud Steam succesfull" << "\n";
+
+}
+
+void CloudHanle::init()
+{
+	std::cout << "------- CloudHandle creation ------- \n";
+	if (!SteamRemoteStorage() && !SteamRemoteStorage()->IsCloudEnabledForApp())
+		std::cerr << "Erreur lors de l'initialisation du Cloud Steam." << "\n";
+	else
+		std::cerr << "Init du Cloud Steam succesfull" << "\n";
 }
 
 bool CloudHanle::saveDataToCloud(const std::string& filename, const void* data, int dataSize)

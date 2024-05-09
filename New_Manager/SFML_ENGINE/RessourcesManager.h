@@ -38,12 +38,12 @@ class SFMLENGINE_API RessourcesManager
 	RessourcesManager();
 	RessourcesManager(Animation loadScreen);
 	~RessourcesManager();
+	
+	SteamManager m_steam;
 	AudioManager m_audio;
 	FontManager m_font;
 	TexturesManager m_textures;
 	MovieManager m_movie;
-	SteamManager m_steam;
-
 	Animation m_loadingScreen;
 	bool m_isReady;
 public:

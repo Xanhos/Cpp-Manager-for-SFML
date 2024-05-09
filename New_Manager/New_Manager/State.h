@@ -26,10 +26,13 @@
 #include "SFML_ENGINE/WindowManager.h"
 #include "SFML_ENGINE/Sprite.h"
 
+class State;
+typedef std::list<std::unique_ptr<State>> StateList;
+
 class State
 {
 protected:
-    std::list<std::unique_ptr<State>>* m_listState;
+    StateList* m_listState;
     WindowManager& m_windowManager;
     static bool m_manetteMode;
     bool m_isReady;
@@ -37,7 +40,7 @@ protected:
     bool m_needToBeDeleted;
     std::string m_name;
 public:
-    State(WindowManager& _window, std::list<std::unique_ptr<State>>* listState);
+    State(WindowManager& _window, StateList* listState);
     bool getIsReady() { return m_isReady; }
     bool& getNeedToBeDeleted() { return m_needToBeDeleted; }
     bool& getIsStarted() { return m_initIsStarted; }

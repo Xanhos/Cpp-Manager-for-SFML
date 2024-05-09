@@ -118,7 +118,7 @@ public:
 	InputDigitalActionData_t& get_button_action(std::string action) { return m_buttonsActions[action]; }
 };
 
-class SFMLENGINE_API AchievmentHandle
+class SFMLENGINE_API AchievementHandle
 {
 private:
 	CSteamID m_steamID;///< Steam ID of the user
@@ -128,13 +128,13 @@ public:
 	/// \brief Default constructor
 	///
 	////////////////////////////////////////////////////////////
-	AchievmentHandle();
+	AchievementHandle();
 	
 	////////////////////////////////////////////////////////////
 	/// \brief Destructor
 	///
 	////////////////////////////////////////////////////////////
-	~AchievmentHandle() = default;
+	~AchievementHandle() = default;
 
 	////////////////////////////////////////////////////////////
 	/// \brief Initializes achievements and stats from Steamworks.
@@ -305,6 +305,9 @@ public:
 	////////////////////////////////////////////////////////////
 	~CloudHanle() = default;
 
+
+	void init();
+
 	////////////////////////////////////////////////////////////////
 	/// \brief Saves data to the Steam Cloud.
 	/// \param filename The name of the file to save.
@@ -354,10 +357,10 @@ public:
 class SFMLENGINE_API SteamManager
 {
 private:
-	ManetteHandle m_manetteH;///< Handle for controller input
-	AchievmentHandle m_achievmentH;///< Handle for achievements
-	LobbyHandle m_lobbyH;///< Handle for lobbies
 	CloudHanle m_cloudH;///< Handle for cloud
+	ManetteHandle m_manetteH;///< Handle for controller input
+	AchievementHandle m_achievmentH;///< Handle for achievements
+	LobbyHandle m_lobbyH;///< Handle for lobbies
 
 public:
 	////////////////////////////////////////////////////////////
@@ -388,7 +391,7 @@ public:
 	/// \brief Gets the achievement handle.
 	/// \return Reference to the achievement handle.
 	////////////////////////////////////////////////////////////
-	AchievmentHandle& getAchievment();
+	AchievementHandle& getAchievment();
 
 	////////////////////////////////////////////////////////////
 	/// \brief Gets the lobby handle.
