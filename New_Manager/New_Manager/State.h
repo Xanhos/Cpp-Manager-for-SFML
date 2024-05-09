@@ -26,36 +26,27 @@
 #include "SFML_ENGINE/WindowManager.h"
 #include "SFML_ENGINE/Sprite.h"
 
-
 class State
 {
 protected:
-	std::stack<std::unique_ptr<State>>* m_stackState;
-	WindowManager& m_windowManager;
+    std::list<std::unique_ptr<State>>* m_listState;
+    WindowManager& m_windowManager;
+    static bool m_manetteMode;
+    bool m_isReady;
+    bool m_initIsStarted;
+    bool m_needToBeDeleted;
+    std::string m_name;
 public:
-	State(WindowManager& _window, std::stack<std::unique_ptr<State>>* stackState);
-	void virtual update() = 0;
+    State(WindowManager& _window, std::list<std::unique_ptr<State>>* listState);
+    bool getIsReady() { return m_isReady; }
+    bool& getNeedToBeDeleted() { return m_needToBeDeleted; }
+    bool& getIsStarted() { return m_initIsStarted; }
+    static bool getManetteMode() { return m_manetteMode; }
+    void virtual init() = 0;
+    void virtual update() = 0;
     void virtual render() = 0;
     void virtual pushState(char data) = 0;
+    std::string virtual getName() { return m_name; }
 };
 
-typedef std::stack<std::unique_ptr<State>> StateStack;
-
-class Test : public State
-{
-private:
-    Animation m_animation;
-	void virtual update();
-    void virtual render();
-    void virtual pushState(char data);
-public:
-	Test(WindowManager& _window, StateStack* stackState);
-
-    sf::Sprite player;
-    sf::Vector2f posPlayer;
-    sf::RectangleShape player2;
-    sf::Vector2f posPlayer2;
-   
-    sf::Sprite bg;
-};
 
