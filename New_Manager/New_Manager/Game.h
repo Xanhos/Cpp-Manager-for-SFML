@@ -10,7 +10,7 @@ class Game
     void render();
 public:
     Game();
-    Game(int width, int height, std::string title, bool fullscreen);
+    Game(int width, int height, std::string title, bool fullscreen,unsigned int antialiasing);
     ~Game();
 
     void runGame();

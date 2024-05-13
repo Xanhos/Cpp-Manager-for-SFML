@@ -49,9 +49,9 @@ WindowManager::WindowManager() : m_size(sf::VideoMode::getDesktopMode().width, s
 	m_window.setView(m_view);
 }
 
-WindowManager::WindowManager(int width, int height, std::string title, bool fullscreen) : m_size(width, height), m_event(), m_isDone(false), m_isFullscreen(fullscreen), m_title(title), m_timer(0.f), m_UpdateIsStopped(false)
+WindowManager::WindowManager(int width, int height, std::string title, bool fullscreen, unsigned int antialiasing)
 {
-	m_window.create(sf::VideoMode(width, height), title, m_isFullscreen ? sf::Style::Fullscreen : sf::Style::Default);
+	m_window.create(sf::VideoMode(width, height), title, fullscreen ? sf::Style::Fullscreen : sf::Style::Default, sf::ContextSettings(0,0,antialiasing));
 
 	if (m_size.x <= 1920.f && m_size.y <= 1080.f)
 		m_view.setCenter(1920.f / 2.f, 1080.F / 2.F);
@@ -71,8 +71,10 @@ WindowManager::WindowManager(int width, int height, std::string title, bool full
 	else
 		m_view.setSize(1920.f, 1080.f);
 
+	m_isFullscreen = fullscreen;
 	m_window.setView(m_view);
 }
+
 
 bool WindowManager::isFullscreen() const
 {
@@ -173,32 +175,12 @@ void WindowManager::StopEventUpdate(bool stop)
 	m_UpdateIsStopped = stop;
 }
 
-float WindowManager::getSFX_Volume() const
+float WindowManager::get_Volume(std::string name)
 {
-	return m_SFX_Volume;
+	return m_map_sound[name];
 }
 
-float WindowManager::getMusic_Volume() const
+void WindowManager::set_Volume(std::string name, float volume)
 {
-	return m_Music_Volume;
-}
-
-float WindowManager::getMovie_Volume() const
-{
-	return m_Movie_Volume;
-}
-
-void WindowManager::setSFX_Volume(float volume)
-{
-	m_SFX_Volume = volume;
-}
-
-void WindowManager::setMusic_Volume(float volume)
-{
-	m_Music_Volume = volume;
-}
-
-void WindowManager::setMovie_Volume(float volume)
-{
-	m_Movie_Volume = volume;
+	m_map_sound[name] = volume;
 }

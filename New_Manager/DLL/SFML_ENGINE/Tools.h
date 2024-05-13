@@ -1,4 +1,4 @@
-/*
+ /*
     Based on Coffee Engine
 
     Author: GRALLAN Yann
@@ -41,6 +41,9 @@
 #include <algorithm>
 #include <stack>
 #include <unordered_map>
+#include "Steam/steam_api.h"
+#include "Steam/isteamdualsense.h"
+#include <array>
 
 #ifdef SFMLENGINE_EXPORTS
 #define SFMLENGINE_API __declspec(dllexport)
@@ -109,6 +112,12 @@ namespace Tools
         float getNorme(sf::Vector2<T> pos)
         {
             return sqrt(pos.x * pos.x + pos.y * pos.y);
+        }  
+
+        template<typename T>
+        sf::Vector2<T> normalize(sf::Vector2<T> _v)
+        {
+            return _v / getNorme(_v);
         }
     }
     

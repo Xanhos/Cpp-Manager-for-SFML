@@ -6,10 +6,12 @@ Game::Game() : m_windowManager()
 {
 }
 
-Game::Game(int width, int height, std::string title, bool fullscreen) : m_windowManager(width, height, title, fullscreen)
+Game::Game(int width, int height, std::string title, bool fullscreen, unsigned int antialiasing) : m_windowManager(width, height, title, fullscreen, antialiasing)
 {
     //m_windowManager.getWindow().setVerticalSyncEnabled(true);
     m_windowManager.getWindow().setFramerateLimit(240);
+    m_windowManager.set_Volume("Music",50.f);
+    m_windowManager.set_Volume("SFX",50.f);
 }
 
 Game::~Game()
@@ -84,8 +86,8 @@ void Game::runGame()
     {
         if (GET_MANAGER->IsReady())
         {
-            GET_MANAGER->setVolumeForAllMusic(m_windowManager.getMusic_Volume());
-            GET_MANAGER->setVolumeForAllSound(m_windowManager.getSFX_Volume());
+            GET_MANAGER->setVolumeForAllMusic(m_windowManager.get_Volume("Music"));
+            GET_MANAGER->setVolumeForAllSound(m_windowManager.get_Volume("SFX"));
         }
 
         update();

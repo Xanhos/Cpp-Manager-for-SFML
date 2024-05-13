@@ -9,11 +9,29 @@
   <component name="ChangeListManager">
     <list default="true" id="4769ce90-0606-49e1-a520-6ccb7e306464" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.New_Manager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.New_Manager/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLL.rar" beforeDir="false" afterPath="$PROJECT_DIR$/DLL.rar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLL/Debug/SFML_ENGINE-d.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLL/Release/SFML_ENGINE.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE-d.lib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE.lib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE/AudioManager.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE/FontManager.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE/GamepadManager.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE/MovieManager.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE/RessourcesManager.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE/Sprite.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE/TexturesManager.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE/Tools.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE/WindowManager.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/DLL_ENGINE/Debug/SFML_ENGINE-d.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DLL_ENGINE/Debug/SFML_ENGINE-d.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SFML_ENGINE/SteamManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/SFML_ENGINE/SteamManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SFML_ENGINE/SteamManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/SFML_ENGINE/SteamManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEW_DLL.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/New_Manager/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/New_Manager/Game.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/New_Manager/Game.h" beforeDir="false" afterPath="$PROJECT_DIR$/New_Manager/Game.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SFML_ENGINE/WindowManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/SFML_ENGINE/WindowManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/SFML_ENGINE/SteamManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/SFML_ENGINE/SteamManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SFML_ENGINE/WindowManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/SFML_ENGINE/WindowManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autoconfigDebug.bat" beforeDir="false" afterPath="$PROJECT_DIR$/autoconfigDebug.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autoconfigRelease.bat" beforeDir="false" afterPath="$PROJECT_DIR$/autoconfigRelease.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/SFML_ENGINE/WindowManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/SFML_ENGINE/WindowManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/SFML_ENGINE-d.lib" beforeDir="false" afterPath="$PROJECT_DIR$/lib/SFML_ENGINE-d.lib" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/x64/Debug/SFML_ENGINE-d.dll" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/SFML_ENGINE-d.dll" afterDir="false" />
     </list>
@@ -30,8 +48,80 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Xanhos"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Xanhos/Cpp-Manager-for-SFML.git",
+    "accountId": "1e1b2177-6c64-46e2-afa0-869933eda272"
+  }
+}]]></component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/../../../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.39.33519/include/tuple" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/include/SFML_ENGINE/SteamManager.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/include/Steam/isteammatchmaking.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/include/Steam/steam_api_internal.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/include/Steam/steamclientpublic.h" root0="SKIP_HIGHLIGHTING" />
@@ -51,7 +141,7 @@
   &quot;keyToString&quot;: {
     &quot;C++ Project.New_Manager.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;steam&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -61,9 +151,9 @@
   },
   &quot;keyToStringList&quot;: {
     &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\l.dossantos\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\l.dossantos\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\l.dossantos\\AppData\\Local\\Symbols\\src&quot;
+      &quot;C:\\Users\\Y.grallan\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Y.grallan\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Y.grallan\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
 }</component>
@@ -135,6 +225,8 @@
       <workItem from="1714979856895" duration="8086000" />
       <workItem from="1715001634302" duration="797000" />
       <workItem from="1715002454716" duration="2511000" />
+      <workItem from="1715246404346" duration="2221000" />
+      <workItem from="1715582757318" duration="1871000" />
     </task>
     <servers />
   </component>
