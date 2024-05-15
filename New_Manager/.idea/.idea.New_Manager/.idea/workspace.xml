@@ -9,31 +9,32 @@
   <component name="ChangeListManager">
     <list default="true" id="4769ce90-0606-49e1-a520-6ccb7e306464" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.New_Manager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.New_Manager/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DLL.rar" beforeDir="false" afterPath="$PROJECT_DIR$/DLL.rar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DLL/Debug/SFML_ENGINE-d.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DLL/Release/SFML_ENGINE.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE-d.lib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE.lib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE/AudioManager.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE/FontManager.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE/GamepadManager.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE/MovieManager.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE/RessourcesManager.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE/Sprite.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE/TexturesManager.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE/Tools.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE/WindowManager.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DLL_ENGINE/Debug/SFML_ENGINE-d.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DLL_ENGINE/Debug/SFML_ENGINE-d.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEW_DLL.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLL/Release/SFML_ENGINE.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DLL/Release/SFML_ENGINE.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLL/SFML_ENGINE/WindowManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/DLL/SFML_ENGINE/WindowManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLL_ENGINE/Release/SFML_ENGINE.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DLL_ENGINE/Release/SFML_ENGINE.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/New_Manager/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/New_Manager/Game.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/New_Manager/Game.h" beforeDir="false" afterPath="$PROJECT_DIR$/New_Manager/Game.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/New_Manager/State.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/New_Manager/State.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/New_Manager/State.h" beforeDir="false" afterPath="$PROJECT_DIR$/New_Manager/State.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/New_Manager/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/New_Manager/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/New_Manager/x64/Release/New_Manager.iobj" beforeDir="false" afterPath="$PROJECT_DIR$/New_Manager/x64/Release/New_Manager.iobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/New_Manager/x64/Release/New_Manager.ipdb" beforeDir="false" afterPath="$PROJECT_DIR$/New_Manager/x64/Release/New_Manager.ipdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Test/TEXTURES/Gomme.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Test/TEXTURES/Load.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Test/TEXTURES/Path.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Test/TEXTURES/Placeholder.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Test/TEXTURES/Save.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Test/TEXTURES/Torche.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Test/TEXTURES/Water.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Test/TEXTURES/spritesheet_meat_mud - Copie.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Test/TEXTURES/spritesheet_meat_mud1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Test/TEXTURES/spritesheet_meat_mud3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Test/TEXTURES/test/meat_mud.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/SFML_ENGINE/WindowManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/SFML_ENGINE/WindowManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SFML_ENGINE/WindowManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/SFML_ENGINE/WindowManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autoconfigDebug.bat" beforeDir="false" afterPath="$PROJECT_DIR$/autoconfigDebug.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autoconfigRelease.bat" beforeDir="false" afterPath="$PROJECT_DIR$/autoconfigRelease.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SFML_ENGINE/x64/Release/SFML_ENGINE.iobj" beforeDir="false" afterPath="$PROJECT_DIR$/SFML_ENGINE/x64/Release/SFML_ENGINE.iobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SFML_ENGINE/x64/Release/SFML_ENGINE.ipdb" beforeDir="false" afterPath="$PROJECT_DIR$/SFML_ENGINE/x64/Release/SFML_ENGINE.ipdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/SFML_ENGINE/WindowManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/SFML_ENGINE/WindowManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/SFML_ENGINE-d.lib" beforeDir="false" afterPath="$PROJECT_DIR$/lib/SFML_ENGINE-d.lib" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/SFML_ENGINE-d.dll" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/SFML_ENGINE-d.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/x64/Release/SFML_ENGINE.dll" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Release/SFML_ENGINE.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,80 +49,24 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Xanhos"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Xanhos&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Xanhos/Cpp-Manager-for-SFML.git",
-    "accountId": "1e1b2177-6c64-46e2-afa0-869933eda272"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Xanhos/Cpp-Manager-for-SFML.git&quot;,
+    &quot;accountId&quot;: &quot;1e1b2177-6c64-46e2-afa0-869933eda272&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.39.33519/include/functional" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.39.33519/include/memory" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.39.33519/include/utility" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/include/SFML_ENGINE/SteamManager.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/include/SFML_ENGINE/WindowManager.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/include/Steam/isteammatchmaking.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/include/Steam/steam_api_internal.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/include/Steam/steamclientpublic.h" root0="SKIP_HIGHLIGHTING" />
@@ -137,26 +82,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;C++ Project.New_Manager.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "C++ Project.New_Manager.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Y.grallan\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Y.grallan\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Y.grallan\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\Y.grallan\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Y.grallan\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\Y.grallan\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="New_Manager" type="CppProject" factoryName="C++ Project">
       <configuration_1>
@@ -226,7 +171,9 @@
       <workItem from="1715001634302" duration="797000" />
       <workItem from="1715002454716" duration="2511000" />
       <workItem from="1715246404346" duration="2221000" />
-      <workItem from="1715582757318" duration="1871000" />
+      <workItem from="1715582757318" duration="4595000" />
+      <workItem from="1715684802578" duration="10510000" />
+      <workItem from="1715756142265" duration="2294000" />
     </task>
     <servers />
   </component>

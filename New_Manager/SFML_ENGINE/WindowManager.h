@@ -23,22 +23,26 @@
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 #pragma once
+#include <any>
+#include <functional>
+
 #include "Tools.h"
 
 class SFMLENGINE_API WindowManager
 {
-	sf::RenderWindow m_window;
-	sf::View m_view;
-	bool m_isFullscreen;
-	float m_timer;
-	bool m_isDone;	
-	bool m_UpdateIsStopped;
-	sf::Vector2i m_size;
-	std::string m_title;
-	sf::Event m_event;
+	sf::RenderWindow m_window_;
+	sf::View m_view_;
+	bool m_is_fullscreen_;
+	float m_timer_;
+	bool m_is_done_;	
+	bool m_update_is_stopped_;
+	sf::Vector2i m_size_;
+	std::string m_title_;
+	sf::Event m_event_;
+	
 
-	std::map<std::string,float> m_map_sound;
-
+	std::map<std::string,float> m_map_sound_;
+	std::map<std::string,std::pair<std::any,std::function<void(WindowManager*,const std::any&)>>> m_custom_param_;
 public:
 
 	////////////////////////////////////////////////////////////
@@ -47,7 +51,7 @@ public:
 	////////////////////////////////////////////////////////////
 	WindowManager();
 	WindowManager(int width, int height, std::string title, bool fullscreen, unsigned int antialiasing);
-
+	WindowManager(int width, int height, std::string title, bool fullscreen,const std::function<void(sf::RenderWindow*)>& custom_window_create);
 
 	////////////////////////////////////////////////////////////
 	/// \brief return if the window is in fullscreen or not
@@ -145,7 +149,7 @@ public:
 	/// 
 	////////////////////////////////////////////////////////////
 	template<typename T>
-	T getMousePos(bool mapPixelToCoord = true) { return (mapPixelToCoord ? T(m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window))) : T(sf::Mouse::getPosition(m_window))); }
+	T getMousePos(bool mapPixelToCoord = true) { return (mapPixelToCoord ? T(m_window_.mapPixelToCoords(sf::Mouse::getPosition(m_window_))) : T(sf::Mouse::getPosition(m_window_))); }
 
 	////////////////////////////////////////////////////////////
 	/// \brief display all the things draw on a window
@@ -183,5 +187,42 @@ public:
 	////////////////////////////////////////////////////////////
 	void set_Volume(std::string name,float volume);
 
+	template <typename T>
+	void AddCustomParam(std::string param_name, T type, std::function<void(WindowManager*,const std::any&)> update_func);
+
 	
+	template <typename T>
+	void SetCustomParam(std::string param_name, T type);
+	
+	template <typename T>
+	T GetCustomParam(std::string param_name);
 };
+
+template <typename T>
+void WindowManager::AddCustomParam(std::string param_name, T type, std::function<void(WindowManager*,const std::any&)> update_func)
+{
+	if(m_custom_param_.contains(param_name))
+		return;
+
+	m_custom_param_[param_name].first = type;
+	m_custom_param_[param_name].second = update_func;
+	m_custom_param_[param_name].second(this,m_custom_param_[param_name].first);
+}
+
+template <typename T>
+void WindowManager::SetCustomParam(std::string param_name, T type)
+{
+	if(m_custom_param_.contains(param_name))
+	{
+		m_custom_param_[param_name].first = type;
+		m_custom_param_[param_name].second(this,m_custom_param_[param_name].first);
+	}
+}
+
+template <typename T>
+T WindowManager::GetCustomParam(std::string param_name)
+{
+	if(m_custom_param_.contains(param_name))
+		return std::any_cast<T>(m_custom_param_[param_name].first);
+	return T();
+}

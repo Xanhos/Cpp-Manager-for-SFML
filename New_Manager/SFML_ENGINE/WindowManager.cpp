@@ -24,163 +24,190 @@
 */
 #include "WindowManager.h"
 
-WindowManager::WindowManager() : m_size(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height), m_event(), m_isDone(false), m_isFullscreen(true), m_title("SFML Window"), m_timer(0.f), m_UpdateIsStopped(false)
+WindowManager::WindowManager() : m_size_(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height), m_event_(), m_is_done_(false), m_is_fullscreen_(true), m_title_("SFML Window"), m_timer_(0.f), m_update_is_stopped_(false)
 {
-	m_window.create(sf::VideoMode::getDesktopMode(), "SFML Window", m_isFullscreen ? sf::Style::Fullscreen : sf::Style::Default);
+	m_window_.create(sf::VideoMode::getDesktopMode(), "SFML Window", m_is_fullscreen_ ? sf::Style::Fullscreen : sf::Style::Default);
 
-	if (m_size.x <= 1920.f && m_size.y <= 1080.f)
-		m_view.setCenter(1920.f / 2.f, 1080.F / 2.F);
-	else if (m_size.x <= 1920.f)
-		m_view.setCenter(1920.f / 2.f, m_size.y / 2.F);
-	else if (m_size.y <= 1080.f)
-		m_view.setCenter(m_size.x / 2.f, 1080.F / 2.F);
+	if (m_size_.x <= 1920.f && m_size_.y <= 1080.f)
+		m_view_.setCenter(1920.f / 2.f, 1080.F / 2.F);
+	else if (m_size_.x <= 1920.f)
+		m_view_.setCenter(1920.f / 2.f, m_size_.y / 2.F);
+	else if (m_size_.y <= 1080.f)
+		m_view_.setCenter(m_size_.x / 2.f, 1080.F / 2.F);
 	else
-		m_view.setCenter(m_size.x / 2.f, m_size.y / 2.F);
+		m_view_.setCenter(m_size_.x / 2.f, m_size_.y / 2.F);
 
-	if (m_size.x >= 1920.f && m_size.y >= 1080.f)
-		m_view.setSize(static_cast<float>(m_size.x), static_cast<float>(m_size.y));
-	else if (m_size.x >= 1920.f)
-		m_view.setSize(static_cast<float>(m_size.x), 1080.f);
-	else if (m_size.y >= 1080.f)
-		m_view.setSize(1920.f, static_cast<float>(m_size.y));
+	if (m_size_.x >= 1920.f && m_size_.y >= 1080.f)
+		m_view_.setSize(static_cast<float>(m_size_.x), static_cast<float>(m_size_.y));
+	else if (m_size_.x >= 1920.f)
+		m_view_.setSize(static_cast<float>(m_size_.x), 1080.f);
+	else if (m_size_.y >= 1080.f)
+		m_view_.setSize(1920.f, static_cast<float>(m_size_.y));
 	else
-		m_view.setSize(1920.f, 1080.f);
+		m_view_.setSize(1920.f, 1080.f);
 
-	m_window.setView(m_view);
+	m_window_.setView(m_view_);
 }
 
-WindowManager::WindowManager(int width, int height, std::string title, bool fullscreen, unsigned int antialiasing)
+WindowManager::WindowManager(int width, int height, std::string title, bool fullscreen, unsigned int antialiasing) :
+m_size_(width, height), m_event_(), m_is_done_(false), m_is_fullscreen_(fullscreen), m_title_(title), m_timer_(0.f), m_update_is_stopped_(false)
 {
-	m_window.create(sf::VideoMode(width, height), title, fullscreen ? sf::Style::Fullscreen : sf::Style::Default, sf::ContextSettings(0,0,antialiasing));
+	m_window_.create(sf::VideoMode(width, height), title, fullscreen ? sf::Style::Fullscreen : sf::Style::Default, sf::ContextSettings(0,0,antialiasing));
 
-	if (m_size.x <= 1920.f && m_size.y <= 1080.f)
-		m_view.setCenter(1920.f / 2.f, 1080.F / 2.F);
-	else if (m_size.x <= 1920.f)
-		m_view.setCenter(1920.f / 2.f, m_size.y / 2.F);
-	else if (m_size.y <= 1080.f)
-		m_view.setCenter(m_size.x / 2.f, 1080.F / 2.F);
+	if (m_size_.x <= 1920.f && m_size_.y <= 1080.f)
+		m_view_.setCenter(1920.f / 2.f, 1080.F / 2.F);
+	else if (m_size_.x <= 1920.f)
+		m_view_.setCenter(1920.f / 2.f, m_size_.y / 2.F);
+	else if (m_size_.y <= 1080.f)
+		m_view_.setCenter(m_size_.x / 2.f, 1080.F / 2.F);
 	else
-		m_view.setCenter(m_size.x / 2.f, m_size.y / 2.F);
+		m_view_.setCenter(m_size_.x / 2.f, m_size_.y / 2.F);
 
-	if (m_size.x >= 1920.f && m_size.y >= 1080.f)
-		m_view.setSize(static_cast<float>(m_size.x), static_cast<float>(m_size.y));
-	else if (m_size.x >= 1920.f)
-		m_view.setSize(static_cast<float>(m_size.x), 1080.f);
-	else if (m_size.y >= 1080.f)
-		m_view.setSize(1920.f, static_cast<float>(m_size.y));
+	if (m_size_.x >= 1920.f && m_size_.y >= 1080.f)
+		m_view_.setSize(static_cast<float>(m_size_.x), static_cast<float>(m_size_.y));
+	else if (m_size_.x >= 1920.f)
+		m_view_.setSize(static_cast<float>(m_size_.x), 1080.f);
+	else if (m_size_.y >= 1080.f)
+		m_view_.setSize(1920.f, static_cast<float>(m_size_.y));
 	else
-		m_view.setSize(1920.f, 1080.f);
+		m_view_.setSize(1920.f, 1080.f);
 
-	m_isFullscreen = fullscreen;
-	m_window.setView(m_view);
+	m_window_.setView(m_view_);
+}
+
+WindowManager::WindowManager(int width, int height, std::string title, bool fullscreen,const std::function<void(sf::RenderWindow* _window)>& custom_window_create) 
+: m_size_(width, height), m_event_(), m_is_done_(false), m_is_fullscreen_(fullscreen), m_title_(title), m_timer_(0.f), m_update_is_stopped_(false)
+{
+	custom_window_create(&this->m_window_);
+	
+	if (m_size_.x <= 1920.f && m_size_.y <= 1080.f)
+		m_view_.setCenter(1920.f / 2.f, 1080.F / 2.F);
+	else if (m_size_.x <= 1920.f)
+		m_view_.setCenter(1920.f / 2.f, m_size_.y / 2.F);
+	else if (m_size_.y <= 1080.f)
+		m_view_.setCenter(m_size_.x / 2.f, 1080.F / 2.F);
+	else
+		m_view_.setCenter(m_size_.x / 2.f, m_size_.y / 2.F);
+
+	if (m_size_.x >= 1920.f && m_size_.y >= 1080.f)
+		m_view_.setSize(static_cast<float>(m_size_.x), static_cast<float>(m_size_.y));
+	else if (m_size_.x >= 1920.f)
+		m_view_.setSize(static_cast<float>(m_size_.x), 1080.f);
+	else if (m_size_.y >= 1080.f)
+		m_view_.setSize(1920.f, static_cast<float>(m_size_.y));
+	else
+		m_view_.setSize(1920.f, 1080.f);
+
+	m_window_.setView(m_view_);
+	
 }
 
 
 bool WindowManager::isFullscreen() const
 {
-	return m_isFullscreen;
+	return m_is_fullscreen_;
 }
 
 void WindowManager::toggleFullscreen()
 {
-	m_isFullscreen = !m_isFullscreen;
-	m_window.close();
-	m_window.create(sf::VideoMode(m_size.x, m_size.y), m_title, m_isFullscreen ? sf::Style::Fullscreen : sf::Style::Default);
+	m_is_fullscreen_ = !m_is_fullscreen_;
+	m_window_.close();
+	m_window_.create(sf::VideoMode(m_size_.x, m_size_.y), m_title_, m_is_fullscreen_ ? sf::Style::Fullscreen : sf::Style::Default);
 }
 
 float WindowManager::timer() const
 {
-	return m_timer;
+	return m_timer_;
 }
 
 void WindowManager::resetTimer()
 {
-	m_timer = 0.f;
+	m_timer_ = 0.f;
 }
 
 void WindowManager::EventUpdate()
 {
-	m_timer += Tools::getDeltaTime();
-	if (!m_UpdateIsStopped)
-		while (m_window.pollEvent(m_event))
-			if (m_event.type == m_event.Closed)
-				m_isDone = 1;
-	if (m_isDone)
-		m_window.close();
+	m_timer_ += Tools::getDeltaTime();
+	if (!m_update_is_stopped_)
+		while (m_window_.pollEvent(m_event_))
+			if (m_event_.type == m_event_.Closed)
+				m_is_done_ = 1;
+	if (m_is_done_)
+		m_window_.close();
 
 }
 
 sf::Event& WindowManager::getEvent()
 {
-	return m_event;
+	return m_event_;
 }
 
 bool WindowManager::pollEvent()
 {
-	return m_window.pollEvent(m_event);
+	return m_window_.pollEvent(m_event_);
 }
 
 sf::RenderWindow& WindowManager::getWindow()
 {
-	return m_window;
+	return m_window_;
 }
 
 sf::Vector2i WindowManager::getSize() const
 {
-	return m_size;
+	return m_size_;
 }
 
 void WindowManager::setDefaultView()
 {
-	m_window.setView(m_view);
+	m_window_.setView(m_view_);
 }
 
 void WindowManager::setVsync(bool OnOff)
 {
-	m_window.setVerticalSyncEnabled(OnOff);
+	m_window_.setVerticalSyncEnabled(OnOff);
 }
 
 sf::View& WindowManager::getView()
 {
-	return m_view;
+	return m_view_;
 }
 
 void WindowManager::clear(sf::Color clearColor)
 {
-	m_window.clear(clearColor);
+	m_window_.clear(clearColor);
 }
 
 void WindowManager::draw(const sf::Drawable& drawable_, const sf::RenderStates& render_)
 {
-	m_window.draw(drawable_, render_);
+	m_window_.draw(drawable_, render_);
 }
 
 void WindowManager::display()
 {
-	m_window.display();
+	m_window_.display();
 }
 
 bool WindowManager::isDone()
 {
-	return m_isDone;
+	return m_is_done_;
 }
 
 bool WindowManager::EventUpdateIsStopped()
 {
-	return m_UpdateIsStopped;
+	return m_update_is_stopped_;
 }
 
 void WindowManager::StopEventUpdate(bool stop)
 {
-	m_UpdateIsStopped = stop;
+	m_update_is_stopped_ = stop;
 }
 
 float WindowManager::get_Volume(std::string name)
 {
-	return m_map_sound[name];
+	return m_map_sound_[name];
 }
 
 void WindowManager::set_Volume(std::string name, float volume)
 {
-	m_map_sound[name] = volume;
+	m_map_sound_[name] = volume;
 }

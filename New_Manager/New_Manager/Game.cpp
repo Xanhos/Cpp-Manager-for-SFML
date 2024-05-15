@@ -6,7 +6,7 @@ Game::Game() : m_windowManager()
 {
 }
 
-Game::Game(int width, int height, std::string title, bool fullscreen, unsigned int antialiasing) : m_windowManager(width, height, title, fullscreen, antialiasing)
+Game::Game(int width, int height, std::string title, bool fullscreen, unsigned int antialiasing) : m_windowManager(width, height, title, fullscreen,antialiasing)
 {
     //m_windowManager.getWindow().setVerticalSyncEnabled(true);
     m_windowManager.getWindow().setFramerateLimit(240);
@@ -36,7 +36,7 @@ void Game::update()
         {
             if (!m_state.front().get()->getIsStarted())
             {
-                std::thread t([&] {m_state.front().get()->init(); });
+                std::thread t([&] {m_state.front().get()->init(); m_state.front()->getIsReady() = true;});
                 t.detach();
                 m_state.front().get()->getIsStarted() = true;
             }
@@ -54,7 +54,7 @@ void Game::update()
 
 void Game::render()
 {
-    m_windowManager.clear(sf::Color::Black);
+    m_windowManager.clear(sf::Color::White);
    
     if(!m_state.empty())
     {
@@ -72,14 +72,18 @@ void Game::render()
 
 void Game::runGame()
 {
-    GET_MANAGER;
     /*TODO : Modifier la texture de l'écran de chargement*/
     GET_MANAGER->getLoadingScreen() = Animation(GET_MANAGER->getTexture("loading"), sf::IntRect(0, 0, 140, 170), 0.1f, 7);
     GET_MANAGER->getLoadingScreen().getSprite().setPosition({ (m_windowManager.getWindow().getSize().x - 140.f) / 2, (m_windowManager.getWindow().getSize().y - GET_MANAGER->getLoadingScreen().getSprite().getGlobalBounds().height) / 2 });
 
     /*TODO : Modifier le state de départ de l'application*/
-
+    m_state.push_back(std::make_unique<Test>(Test(m_windowManager,&m_state)));
     
+    m_windowManager.AddCustomParam("FPS",1500u,[](WindowManager* _window,const std::any& param)
+    {
+        const unsigned int fps = std::any_cast<unsigned int>(param);
+        _window->getWindow().setFramerateLimit(fps);
+    });
 
    
     while (!m_windowManager.isDone())

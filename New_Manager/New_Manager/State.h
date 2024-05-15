@@ -26,13 +26,16 @@
 #include "SFML_ENGINE/WindowManager.h"
 #include "SFML_ENGINE/Sprite.h"
 
+#define PUSH_STATE(Type) m_state.push_back(std::make_unique<Type>(Type(m_windowManager, m_state))
+
+
 class State;
 typedef std::list<std::unique_ptr<State>> StateList;
 
 class State
 {
 protected:
-    StateList* m_listState;
+    StateList* m_state;
     WindowManager& m_windowManager;
     static bool m_manetteMode;
     bool m_isReady;
@@ -41,7 +44,7 @@ protected:
     std::string m_name;
 public:
     State(WindowManager& _window, StateList* listState);
-    bool getIsReady() { return m_isReady; }
+    bool& getIsReady() { return m_isReady; }
     bool& getNeedToBeDeleted() { return m_needToBeDeleted; }
     bool& getIsStarted() { return m_initIsStarted; }
     static bool getManetteMode() { return m_manetteMode; }
@@ -52,4 +55,20 @@ public:
     std::string virtual getName() { return m_name; }
 };
 
+class Test : public State
+{
+protected:
+    std::unordered_map<std::string, std::pair<sf::Sprite,float>> m_sprite_map;
+    sf::RectangleShape m_player_rectangle_shape_;
+    sf::View m_view_;
+    sf::Vector2f m_view_position_;
+    float m_parallax_speed_;
+public:
+    Test(WindowManager& _window,StateList* _state_list);
+    void init() override;
+    void update() override;
+    void render() override;
+    void pushState(char data) override;
+    
+};
 
