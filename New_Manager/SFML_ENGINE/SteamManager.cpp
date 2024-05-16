@@ -78,7 +78,7 @@ void ManetteHandle::update()
 {
 	if (!SteamInput()->GetConnectedControllers(m_manetteHandles))
 		m_rebindController = true;
-
+	m_nbManette = SteamInput()->GetConnectedControllers(m_manetteHandles);
 	if (m_rebindController)
 	{
 		m_nbManette = SteamInput()->GetConnectedControllers(this->getHandleController());
